@@ -1,1 +1,16 @@
-<p>home works!</p>
+<ng-container *ngFor="let tab of service.tabs">
+    <div class="tabs">
+        <h1>{{tab.pageName}}</h1>
+    </div>
+    <ng-container *ngFor="let subPage of tab.subPages">
+        <div class="sideBarParent">
+            <h1>{{subPage.pageName}}</h1>
+        </div>
+        <ng-container *ngFor="let childPage of subPage.childPages">
+            <div class="sideBarChild">
+                <h1>{{childPage.pageName}}</h1>
+            </div>
+        </ng-container>
+    </ng-container>
+</ng-container>
+

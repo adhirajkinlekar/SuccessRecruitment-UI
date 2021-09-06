@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
+import { HomeService } from './home.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  // data:any;
+  // pages = [];
+  constructor(private route: ActivatedRoute,private service:HomeService) { 
+    // this.data = this.route.snapshot.data['Data'];
+  }
 
   ngOnInit(): void {
   }
