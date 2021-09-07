@@ -1,16 +1,67 @@
-<ng-container *ngFor="let tab of service.tabs">
-    <div class="tabs">
-        <h1>{{tab.pageName}}</h1>
-    </div>
-    <ng-container *ngFor="let subPage of tab.subPages">
-        <div class="sideBarParent">
-            <h1>{{subPage.pageName}}</h1>
+ <div class="page-wrapper toggled">
+    <nav id="sidebar" class="sidebar-wrapper">
+      <div class="sidebar-content">
+        <a href="#" id="toggle-sidebar"><i class="fa fa-bars"></i></a>
+        <div class="sidebar-brand" style="height: 75px;">
+          <a href="#"></a>
         </div>
-        <ng-container *ngFor="let childPage of subPage.childPages">
-            <div class="sideBarChild">
-                <h1>{{childPage.pageName}}</h1>
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://azouaoui-med.github.io/pro-sidebar-template/bootstrap3/assets/img/user.jpg" alt="">
+          </div>
+          <div class="user-info">
+            <span class="user-name"><strong>Adhiraj Kinlekar</strong></span>
+            <span class="user-role">Administrator</span>
+          </div>
+        </div>
+        <!-- sidebar-header  -->
+        <!-- <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search for...">
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
             </div>
-        </ng-container>
-    </ng-container>
-</ng-container>
+          </div>
+        </div> -->
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <div class="header-menu" *ngFor="let tab of service.tabs"><span class="tab">{{tab.pageName}}</span>
+            <li class="sidebar-dropdown " *ngFor="let subPage of tab.subPages;let i = index">
+              <a ><span class="subPage" (click)="expandMenu($event,i)">{{subPage.pageName}}</span></a>
 
+              <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages" class="hidesubmenu" #Menu id="{{subPage.pageName}}">
+                <ul>
+                  <li>
+                      <a><span class="childPage ">{{childPage.pageName}}</span></a>
+                    </li>
+                </ul>
+              </div>
+              
+            </li>
+           </div>
+          </ul>
+        </div>
+        <!-- sidebar-menu  -->
+        <!-- sidebar-menu  -->
+      </div>
+      <!-- sidebar-content  -->
+
+    </nav>
+    <!-- sidebar-wrapper  -->
+    <main class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <h1>Pro sidebar template</h1>
+          <p>A responsive sidebar template with dropdown menu based on bootstrap framework.</p>
+          <hr>
+          <div class="alert alert-info">Find latest version built with bootstrap 4 in github</div>
+          <a href="https://github.com/azouaoui-med/pro-sidebar-template" class="btn btn-default" target="_blank"><i class="fa fa-github"></i> View source on github</a>
+          <a href="https://github.com/azouaoui-med/pro-sidebar-template/archive/gh-pages.zip" class="btn btn-default" target="_blank"><i class="fa fa-download"></i> Download latest version</a>
+          
+        </div>
+      </div>
+    </main>
+    <!-- page-content" -->
+  </div>
+  <!-- page-wrapper -->
