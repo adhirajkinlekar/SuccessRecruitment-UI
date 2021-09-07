@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild,ElementRef,QueryList,ViewChildren} from '@angular/core';
+import { Component, OnInit,ElementRef,QueryList,ViewChildren} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from './home.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,11 +9,11 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  // @ViewChild('Menu', { read: ElementRef, static:false }) Menu: ElementRef;
-  @ViewChildren("Menu") private Menu: QueryList<ElementRef>;
-  isSubmenUexpanded = false;
-  constructor(private route: ActivatedRoute,public service:HomeService) { 
+  // @ViewChild('Menu', { read: ElementRef, static:false }) Menu: ElementRef; For signle element
+  @ViewChildren("Menu") private Menu: QueryList<ElementRef>; // For list of elements
   
+  constructor(private route: ActivatedRoute,public service:HomeService) { 
+    
   }
 
   ngOnInit(): void {

@@ -1,17 +1,18 @@
  <div class="page-wrapper toggled">
     <nav id="sidebar" class="sidebar-wrapper">
       <div class="sidebar-content">
-        <a href="#" id="toggle-sidebar"><i class="fa fa-bars"></i></a>
-        <div class="sidebar-brand" style="height: 75px;">
+        <a href="#" id="toggle-sidebar"></a>
+        <div class="sidebar-brand" style="height: 105px;">
           <a href="#"></a>
         </div>
         <div class="sidebar-header">
-          <div class="user-pic">
-            <img class="img-responsive img-rounded" src="https://azouaoui-med.github.io/pro-sidebar-template/bootstrap3/assets/img/user.jpg" alt="">
-          </div>
+          
           <div class="user-info">
             <span class="user-name"><strong>Adhiraj Kinlekar</strong></span>
             <span class="user-role">Administrator</span>
+          </div>
+          <div class="user-pic">
+            <img class="profileImg" src="../../assets/signOut.png" style="width: 20px;" alt="">
           </div>
         </div>
  
@@ -37,10 +38,13 @@
     </nav>
     <main class="">
         <div class="">
-          <router-outlet>
+          <router-outlet name="secondRouterOutlet">
           </router-outlet>
       </div>
     </main>
     <!-- page-content" -->
   </div>
   <!-- page-wrapper -->
+
+
+  
