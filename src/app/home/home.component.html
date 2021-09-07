@@ -14,16 +14,7 @@
             <span class="user-role">Administrator</span>
           </div>
         </div>
-        <!-- sidebar-header  -->
-        <!-- <div class="sidebar-search">
-          <div>
-            <div class="input-group">
-              <input type="text" class="form-control search-menu" placeholder="Search for...">
-              <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            </div>
-          </div>
-        </div> -->
-        <!-- sidebar-search  -->
+ 
         <div class="sidebar-menu">
           <ul>
             <div class="header-menu" *ngFor="let tab of service.tabs"><span class="tab">{{tab.pageName}}</span>
@@ -42,24 +33,12 @@
            </div>
           </ul>
         </div>
-        <!-- sidebar-menu  -->
-        <!-- sidebar-menu  -->
       </div>
-      <!-- sidebar-content  -->
-
     </nav>
-    <!-- sidebar-wrapper  -->
-    <main class="page-content">
-      <div class="container-fluid">
-        <div class="row">
-          <h1>Pro sidebar template</h1>
-          <p>A responsive sidebar template with dropdown menu based on bootstrap framework.</p>
-          <hr>
-          <div class="alert alert-info">Find latest version built with bootstrap 4 in github</div>
-          <a href="https://github.com/azouaoui-med/pro-sidebar-template" class="btn btn-default" target="_blank"><i class="fa fa-github"></i> View source on github</a>
-          <a href="https://github.com/azouaoui-med/pro-sidebar-template/archive/gh-pages.zip" class="btn btn-default" target="_blank"><i class="fa fa-download"></i> Download latest version</a>
-          
-        </div>
+    <main class="">
+        <div class="">
+          <router-outlet>
+          </router-outlet>
       </div>
     </main>
     <!-- page-content" -->

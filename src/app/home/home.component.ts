@@ -19,7 +19,6 @@ export class HomeComponent implements OnInit {
   }
 
   expandMenu($event,i) {
-    
     this.Menu.toArray().forEach((ele,i)=>{
       if(ele.nativeElement.id == $event.srcElement.innerText){
         if(ele.nativeElement.classList.contains('hidesubmenu')){

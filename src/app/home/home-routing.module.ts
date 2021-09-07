@@ -6,6 +6,8 @@ const routes: Routes = [{
   path:'home',component:HomeComponent,resolve:{
     Data:HomeResolver
   }
+},{
+  path:'AddEditJob',loadChildren: ()=>  import('./job/job.module').then((m)=> m.JobModule)
 }];
 
 @NgModule({
