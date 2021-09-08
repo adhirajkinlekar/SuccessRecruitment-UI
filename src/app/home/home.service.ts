@@ -15,6 +15,7 @@ export class HomeService {
         this.tabs.push({
           pageId:tabPage.pageId,
           pageName:tabPage.pageName,
+          pageLink:tabPage.pageLink,
           parentPageId:tabPage.parentPageId,
           subPages:[]
         })
@@ -27,6 +28,7 @@ export class HomeService {
             tabPage.subPages.push({
               pageId:subPage.pageId,
               pageName:subPage.pageName,
+              pageLink:subPage.pageLink,
               parentPageId:subPage.parentPageId,
               childPages:[]
             })
@@ -39,6 +41,7 @@ export class HomeService {
              subPage.childPages.push({
                pageId:childPage.pageId,
                pageName:childPage.pageName,
+               pageLink:childPage.pageLink,
                parentPageId:childPage.parentPageId
              })
             }

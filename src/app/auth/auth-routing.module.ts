@@ -5,7 +5,7 @@ import { SignInResolver } from './sign-in/Sign-In.resolver';
 
 const routes: Routes = [
    {
-    path:'', component:SignInComponent, resolve: {
+    path:'', component:SignInComponent,resolve: {
       Data: SignInResolver
     }
 

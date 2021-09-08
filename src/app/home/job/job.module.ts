@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JobComponent } from './job.component';
+import { AddEditJobComponent } from './AddEditJobs/AddEditJob.component';
 import { JobRoutingModule } from './job-routing.module';
+import { ViewjobsComponent } from './viewjobs/viewjobs.component';
 
 @NgModule({
-  declarations: [JobComponent],
+  declarations: [AddEditJobComponent, ViewjobsComponent],
   imports: [
     CommonModule,
     JobRoutingModule
