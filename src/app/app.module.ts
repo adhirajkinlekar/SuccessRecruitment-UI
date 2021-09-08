@@ -8,6 +8,7 @@ import { AuthHttpInterceptor } from './auth/auth-interceptor.component';
 import { HomeModule } from './home/home.module';
 import { SignInResolver } from './auth/sign-in/Sign-In.resolver';
 import { HomeResolver } from './home/home.resolver';
+import { AddEditJobResolver } from './home/job/AddEditJobs/AddEditJob.resolver';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +24,8 @@ import { HomeResolver } from './home/home.resolver';
     provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptor,multi:true
   },
 SignInResolver,
-HomeResolver],
+HomeResolver,
+AddEditJobResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

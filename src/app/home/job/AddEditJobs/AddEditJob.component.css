@@ -1,0 +1,12 @@
+.headerError{
+    color: red;
+    margin-left: 20px;
+}
+.error{
+    border-radius: 4px;
+    text-align: center;
+}
+
+.headerSuccess{
+    color: rgb(113, 175, 113);
+}

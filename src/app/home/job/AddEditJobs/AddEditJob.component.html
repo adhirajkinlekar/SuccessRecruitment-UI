@@ -1,46 +1,72 @@
 <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
   <div class="card-header">Add/Edit Job</div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="success">
+    {{success}}
+  </div>
+  <form [formGroup]="jobForm" (submit)="submitForm($event, jobForm.value)" *ngIf="recruiters"> 
    <div class="card-body col-12">
 
     <div class="row">
-        <div class="col-12 col-lg-6 col-xl-4">
-          <select class="form-select mb-3 " aria-label="Default select example">
-            <option selected>Select Employer</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+      
+        <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          
+          <select class="form-select " aria-label="Default select example" formControlName="EmployerId">
+            <option value="" selected>Select Recruiter</option>
+            <option *ngFor="let recruiter of recruiters" [value]="recruiter.recruiterId">{{recruiter.recruiterName}}</option>
           </select>
-    </div>
-
-    <div class="col-12 col-lg-6 col-xl-4">
-        <div class="input-group mb-3">
+          <ng-container *ngIf="jobForm.hasError('length')">
+            <div class="alert-danger error" *ngIf="jobForm.controls.EmployerId.touched">
+                Recruiter is required
+            </div>
+            </ng-container>
+     </div>
+    <div class="col-12 col-lg-6 col-xl-4 mb-3">
+        <div class="input-group">
             <span class="input-group-text">Job Title</span>
-            <input type="text" class="form-control" aria-label="Job Title">
+            <input type="text" class="form-control" aria-label="Job Title" formControlName="JobTitle">
           </div>
+          <ng-container *ngIf="jobForm.controls.JobTitle.errors">
+            <div class="alert-danger error" *ngIf="jobForm.controls.JobTitle.touched &&  jobForm.controls.JobTitle.errors.required">
+              Job Title is Required
+            </div>
+          </ng-container>
     </div>
 
-    <div class="col-12 col-lg-6 col-xl-4">
-        <div class="input-group mb-3">
+    <div class="col-12 col-lg-6 col-xl-4 mb-3">
+        <div class="input-group">
             <span class="input-group-text">Field</span>
-            <input type="text" class="form-control" aria-label="Field">
+            <input type="text" class="form-control" aria-label="Field" formControlName="Field">
           </div>
+          <ng-container *ngIf="jobForm.controls.Field.errors">
+            <div class="alert-danger error" *ngIf="jobForm.controls.Field.touched &&  jobForm.controls.Field.errors.required">
+              Field is Required
+            </div>
+          </ng-container>
     </div>
 
-    <div class="col-12 col-lg-6 col-xl-4">
-        <div class="input-group mb-3">
+    <div class="col-12 col-lg-6 col-xl-4 mb-3">
+        <div class="input-group">
             <span class="input-group-text">Location</span>
-            <input type="text" class="form-control" aria-label="Location">
+            <input type="text" class="form-control" aria-label="JobLocation" formControlName="JobLocation">
           </div>
+          <ng-container *ngIf="jobForm.controls.JobLocation.errors">
+            <div class="alert-danger error" *ngIf="jobForm.controls.JobLocation.touched &&  jobForm.controls.JobLocation.errors.required">
+              Field is Required
+            </div>
+          </ng-container>
     </div>
 
     <div class="col-12">
         <div class="input-group">
             <span class="input-group-text">Job Description</span>
-            <textarea class="form-control" aria-label="With textarea" style="height: 100px;"></textarea>
+            <textarea class="form-control" aria-label="With textarea" style="height: 100px;" formControlName="JobDescription"></textarea>
           </div>
     </div>
 </div>
-        <button type="button" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</button>
+        <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</button>
 </div>
-
+</form>
 </div>
