@@ -86,7 +86,6 @@ export class AddEditJobComponent implements OnInit {
         this.router.navigateByUrl(url)
       } 
     })
-
   }
   
   submitForm(){
@@ -108,6 +107,9 @@ export class AddEditJobComponent implements OnInit {
         isUpdated=>{
           if(isUpdated){
             this.success = "Job has been successfully Updated";
+            for (let c in this.jobForm.controls) {
+              this.jobForm.controls[c].markAsPristine();
+          }
           }
         },
         error=>{

@@ -10,6 +10,7 @@ import { SignInResolver } from './auth/sign-in/Sign-In.resolver';
 import { HomeResolver } from './home/home.resolver';
 import { AddEditJobResolver } from './home/job/AddEditJobs/AddEditJob.resolver';
 import { ViewJobsResolver } from './home/job/viewjobs/ViewJobs.resolver';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ViewJobsResolver } from './home/job/viewjobs/ViewJobs.resolver';
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    HomeModule
+    HomeModule,
+    NgbModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,useClass:AuthHttpInterceptor,multi:true
