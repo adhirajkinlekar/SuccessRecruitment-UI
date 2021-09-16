@@ -25,7 +25,10 @@ export class ViewjobsComponent implements OnInit {
 
   filterJobs(value){
     this.filteredJobs = this.jobs.filter((job)=>{
-      return job.jobTitle.toLowerCase().includes(value.toLowerCase()) ||job.recruiterName.toLowerCase().includes(value.toLowerCase()) || job.field.toLowerCase().includes(value.toLowerCase())
+      return job.jobTitle.toLowerCase().includes(value.toLowerCase()) ||
+      job.recruiterName.toLowerCase().includes(value.toLowerCase()) || 
+      job.field.toLowerCase().includes(value.toLowerCase()) || 
+      job.jobLocation.toLowerCase().includes(value.toLowerCase())
     })
   }
   open(content,job) {

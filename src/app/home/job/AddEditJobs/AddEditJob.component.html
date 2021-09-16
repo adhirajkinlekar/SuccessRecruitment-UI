@@ -1,5 +1,6 @@
 <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
-  <div class="card-header">{{this.title}}</div>
+  <div class="card-header" *ngIf="!isUpdate">Add Job</div>
+  <div class="card-header" *ngIf="isUpdate">Edit Job - {{formValue?.jobTitle}}</div>
   <div class="alert alert-danger" role="alert" *ngIf="error">
     {{error}}
   </div>
@@ -66,7 +67,10 @@
           </div>
     </div>
 </div>
-        <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i> {{buttonText}}</button>
+        <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+          <span *ngIf="!isUpdate"> Submit</span>
+          <span *ngIf="isUpdate"> Update</span>
+          </button>
 </div>
 </form>
 </div>

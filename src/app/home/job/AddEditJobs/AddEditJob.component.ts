@@ -26,7 +26,7 @@ export class AddEditJobComponent implements OnInit {
     JobTitle: new FormControl('',[Validators.required]),
     Field: new FormControl('',[Validators.required]),
     JobLocation: new FormControl('',[Validators.required]),
-    JobDescription: new FormControl('',[Validators.required])
+    JobDescription: new FormControl('')
 },{ validators: [this.selectValidator()]})
 
   constructor(private service: AddEditJobService, private route: ActivatedRoute, public router: Router) {
@@ -35,14 +35,13 @@ export class AddEditJobComponent implements OnInit {
       this.recruiters = this.route.snapshot.data['Data'][0].$values
      this.formValue = this.route.snapshot.data['Data'][1];
      this.isUpdate = true;
-     this.title = 'Edit Job - '+ this.formValue.jobTitle;
      this.buttonText = 'Update'
       this.jobForm.patchValue({
-        EmployerId:this.formValue.recruiterId,
-        JobTitle:this.formValue.jobTitle,
-        Field:this.formValue.field,
-        JobLocation:this.formValue.jobLocation,
-        JobDescription:this.formValue.jobDescription,
+        EmployerId:this.formValue?.recruiterId,
+        JobTitle:this.formValue?.jobTitle,
+        Field:this.formValue?.field,
+        JobLocation:this.formValue?.jobLocation,
+        JobDescription:this.formValue?.jobDescription,
       });
     }
     else{
@@ -52,6 +51,16 @@ export class AddEditJobComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // following highlighted code is unrelated and just placed here to show the funtioning of valuechanges and status changes
+    // this.jobForm.valueChanges.subscribe(data=>{
+    //   console.log('fired');
+    // })
+    this.jobForm.statusChanges.subscribe(status=>{
+      if(status === 'VALID'){
+        this.error = null;
+      }
+
+    })
   }
 
   selectValidator() {
@@ -122,7 +131,7 @@ export class AddEditJobComponent implements OnInit {
          isPosted=>{
            if(isPosted){
              this.jobForm.reset();
-             this.success = "Job has been successfully published";
+             this.success = "Job has been successfully published on the website";
            }
          },
          error=>{

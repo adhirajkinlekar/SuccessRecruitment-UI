@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignInService } from './sign-in.service';
 import {Router} from '@angular/router';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -19,7 +20,7 @@ export class SignInComponent implements OnInit {
   error:string;
  //Second parameter can be used to apply validation to the entire formgroup
  
-  constructor(private service:SignInService,private router: Router) {}
+  constructor(private service:SignInService,private appService: AppService,private router: Router) {}
 
   ngOnInit(): void {
     
@@ -44,15 +45,14 @@ export class SignInComponent implements OnInit {
 
     this.service.signIn(credentials).subscribe(
       user=>{
-        console.log(user)
          localStorage.setItem('JWT_TOKEN',`Bearer ${user.token}`);
-         this.service.isAuthenticated.next(true);
+         localStorage.setItem('USER_NAME',`${user.userName}`);
+         localStorage.setItem('USER_ROLES',`${user.userRoles}`);
+         this.appService.isAuthenticated.next(true);
          this.router.navigateByUrl('/home');
       },
       error=>{
-        console.log(error)
           this.error = error.error;
-          this.error = "Error occured";
       }
     )
     

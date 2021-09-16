@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { SignInService } from './sign-in.service';
 import {Router} from '@angular/router';
+import { AppService } from 'src/app/app.service';
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
+// if we do not use {providedIn: 'root'} then we would need to import the resolver in the app module.
 export class SignInResolver implements Resolve<any> {
 
-constructor(private service: SignInService,private router: Router) {}
+constructor(private service: AppService,private router: Router) {}
 
 resolve(route: ActivatedRouteSnapshot) {
    return this.service.checkUserAuthentication().then(

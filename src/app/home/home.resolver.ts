@@ -3,7 +3,11 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { HomeService } from './home.service';
 import {Router} from '@angular/router';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+}
+)
+// if we do not use {providedIn: 'root'} then we would need to import the resolver in the app module
 export class HomeResolver implements Resolve<any> {
 
 constructor(private service: HomeService,private router: Router) {}

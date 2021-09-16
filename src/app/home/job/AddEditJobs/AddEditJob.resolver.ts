@@ -4,7 +4,12 @@ import {AddEditJobService} from './AddEditJob.service';
 import {Router} from '@angular/router';
 import {forkJoin} from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+}
+)
+// if we do not use {providedIn: 'root'} then we would need to import the resolver in the app module
+
 export class AddEditJobResolver implements Resolve<any> {
 
 constructor(private service: AddEditJobService,private router: Router) {}

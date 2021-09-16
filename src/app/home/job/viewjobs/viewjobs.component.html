@@ -1,11 +1,11 @@
 <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
   <div class="card-header">Jobs</div>
-    <input class="form-control me-2 mb-1" type="search" (input)="filterJobs($event.target.value)" placeholder="Search" aria-label="Search">
+    <input class="form-control me-2 mb-1" type="search" (input)="filterJobs($event.target.value)" placeholder="Search by Recuiter Name, Field, Location, Job Title" aria-label="Search">
   <ol class="list-group list-group-numbered">
     <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let job of filteredJobs">
     
       <div class="ms-2 me-auto">
-        <div class="fw-bold">{{job.jobTitle}} <i [routerLink]="['../EditJob',job.jobId]" class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i><i class="fa fa-eye" style="margin-left: 7px;" aria-hidden="true" (click)="open(content,job)"></i></div>
+        <div class="fw-bold">{{job.jobTitle}} <i [routerLink]="['../EditJob',job.jobId]" class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i><i style="cursor: pointer;" class="fa fa-eye" style="margin-left: 7px;" aria-hidden="true" (click)="open(content,job)"></i></div>
         {{job.field}} - {{job.jobLocation}}
       </div>
       <span class="badge bg-primary rounded-pill">{{job.recruiterName}}</span>

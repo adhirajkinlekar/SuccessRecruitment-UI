@@ -7,8 +7,8 @@
         <div class="sidebar-header">
           
           <div class="user-info">
-            <span class="user-name"><strong>Adhiraj Kinlekar</strong></span>
-            <span class="user-role">Administrator</span>
+            <span class="user-name"><strong>{{userName}}</strong></span>
+            <span class="user-role">{{userRoles}}</span>
           </div>
           <div class="user-pic" (click)="signOut()">
             <img class="profileImg" src="../../assets/signOut.png" style="width: 20px;" alt="">
@@ -35,15 +35,11 @@
         </div>
       </div>
     </nav>
-    <main class="">
-        <div class="">
+    <main>
+        <div>
           <router-outlet>
           </router-outlet>
       </div>
     </main>
-    <!-- page-content" -->
   </div>
-  <!-- page-wrapper -->
-
-
   

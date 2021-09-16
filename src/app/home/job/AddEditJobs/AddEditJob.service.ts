@@ -9,19 +9,19 @@ export class AddEditJobService {
     constructor(private http:HttpClient){}
 
     getRecuiters(){
-      return this.http.get<any>(`${this.baseUrl}/Recuiters`)
+      return this.http.get(`${this.baseUrl}/Recuiters`)
     }
 
     postJob(jobDetails){
-      return this.http.post<any>(`${this.baseUrl}/PublishJob`,jobDetails) // passing jobDetails as {jobDetails} will send an empty dto to the server
+      return this.http.post(`${this.baseUrl}/PublishJob`,jobDetails) // passing jobDetails as {jobDetails} will send an empty dto to the server
     }
     getAllJobs(){
-      return this.http.get<any>(`${this.baseUrl}/AllJobs`)
+      return this.http.get(`${this.baseUrl}/AllJobs`)
     }
     getJobById(jobId){
-      return this.http.get<any>(`${this.baseUrl}/Job/${jobId}`)
+      return this.http.get(`${this.baseUrl}/Job/${jobId}`)
     }
     updateJob(jobDetails){
-      return this.http.put<any>(`${this.baseUrl}/UpdateJob`,jobDetails) 
+      return this.http.put(`${this.baseUrl}/UpdateJob`,jobDetails) 
     }
 }

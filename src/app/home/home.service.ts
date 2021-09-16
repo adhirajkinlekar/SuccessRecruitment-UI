@@ -49,7 +49,6 @@ export class HomeService {
       
         });
       });
-      console.log(this.tabs)
      },
      err=>{
        console.log(err)

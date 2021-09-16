@@ -15,14 +15,11 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
       
     let token = localStorage.getItem('JWT_TOKEN');
-    if(token){
         let modifiedRequest = request.clone({
             setHeaders:{
-               'Authorization':token
+               'Authorization':token != null ? token : ''
             }
         })
         return next.handle(modifiedRequest);
-    }
-    return next.handle(request);
   }
 }
