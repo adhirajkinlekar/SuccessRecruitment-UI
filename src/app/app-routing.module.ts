@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import {SignInComponent} from './auth/sign-in/sign-in.component';
-import {SignInResolver} from './auth/sign-in/Sign-In.resolver';
 //Check if it would be better to have home module load eagerly
 const routes: Routes = [
   {
@@ -11,9 +10,7 @@ const routes: Routes = [
     loadChildren: ()=> import('./home/home.module').then(m=> m.HomeModule)
   },
   {
-    path:'signin', component:SignInComponent,resolve: {
-      Data: SignInResolver
-    }
+    path:'signin', component:SignInComponent
    }
 ];
 //AuthGuard is an array so that we can have multiple guards

@@ -8,6 +8,6 @@
     "\\src\\app\\auth\\sign-in",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\app.service.ts",
+  "SelectedNode": "\\src\\app\\auth\\sign-in\\sign-in.component.ts",
   "PreviewInSolutionExplorer": false
 }
