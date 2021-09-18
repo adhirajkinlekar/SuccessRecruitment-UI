@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import {AddEditJobService} from './AddEditJob.service';
+import { JobService} from '../Job.service';
 import {Router} from '@angular/router';
 import {forkJoin} from 'rxjs';
 
@@ -12,13 +12,12 @@ import {forkJoin} from 'rxjs';
 
 export class AddEditJobResolver implements Resolve<any> {
 
-constructor(private service: AddEditJobService,private router: Router) {}
+constructor(private service: JobService,private router: Router) {
+}
 
 resolve(route: ActivatedRouteSnapshot) {
   const jobId = route.params['id'];
-   
-  if(jobId){
-      
+  if(route.queryParams.isEdit == 'true'){
        return forkJoin([
         this.service.getRecuiters(),
         this.service.getJobById(jobId)

@@ -1,12 +1,12 @@
  <div class="page-wrapper toggled">
     <nav id="sidebar" class="sidebar-wrapper">
       <div class="sidebar-content">
-        <div class="sidebar-brand" style="height: 105px;" >
-          <a routerLink="/home"></a>
+        <div routerLink="/" class="sidebar-brand" style="height: 105px;" >
+        
         </div>
         <div class="sidebar-header">
           
-          <div class="user-info">
+          <div class="user-info" #test>
             <span class="user-name"><strong>{{userName}}</strong></span>
             <span class="user-role">{{userRoles}}</span>
           </div>
@@ -15,13 +15,14 @@
           </div>
         </div>
  
-        <div class="sidebar-menu">
+        <div #container #Items class="sidebar-menu">
           <ul>
-            <div class="header-menu" *ngFor="let tab of service.tabs"><span class="tab" [routerLink]="tab.pageLink" >{{tab.pageName}}</span>
+            <div class="header-menu" *ngFor="let tab of tabs"><span class="tab" [routerLink]="tab.pageLink" >{{tab.pageName}}</span>
             <li class="sidebar-dropdown " *ngFor="let subPage of tab.subPages;let i = index">
               <a ><span class="subPage" (click)="expandMenu($event,i)">{{subPage.pageName}}</span></a>
-
-              <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages" [routerLink]="childPage.pageLink"  class="hidesubmenu" #Menu id="{{subPage.pageName}}">
+              <!-- routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" -->
+              <!-- [queryParams]="{allowEdit:true}" can be added alongside routerlink. These can be accessed from activatedRoute-->
+              <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages"  [routerLink]="childPage.pageLink" [queryParams]="showQueryParams(childPage.pageLink)"   class="hidesubmenu" #Menu id="{{subPage.pageName}}">
                 <ul>
                   <li>
                       <a><span class="childPage">{{childPage.pageName}}</span></a>

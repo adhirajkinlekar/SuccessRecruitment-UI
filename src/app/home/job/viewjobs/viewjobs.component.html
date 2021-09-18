@@ -5,7 +5,7 @@
     <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let job of filteredJobs">
     
       <div class="ms-2 me-auto">
-        <div class="fw-bold">{{job.jobTitle}} <i [routerLink]="['../EditJob',job.jobId]" class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i><i style="cursor: pointer;" class="fa fa-eye" style="margin-left: 7px;" aria-hidden="true" (click)="open(content,job)"></i></div>
+        <div class="fw-bold">{{job.jobTitle}} <i [routerLink]="['../EditJob',job.jobId]" [queryParams]="{isEdit:true}" class="fa fa-pencil" aria-hidden="true" style="cursor: pointer;"></i><i class="fa fa-eye" style="margin-left: 7px;cursor: pointer;" aria-hidden="true" (click)="open(content,job)"></i></div>
         {{job.field}} - {{job.jobLocation}}
       </div>
       <span class="badge bg-primary rounded-pill">{{job.recruiterName}}</span>
@@ -22,7 +22,7 @@
     <p style="white-space :pre-wrap">{{selectedJob.jobDescription}}</p>
   </div>
   <div class="modal-footer">
-   <button [routerLink]="['../EditJob',selectedJob.jobId]" type="button" class="btn btn-primary" (click)="d('Cross click')">Edit</button>
+   <button [routerLink]="['../EditJob',selectedJob.jobId]" [queryParams]="{isEdit:true}" type="button" class="btn btn-primary" (click)="d('Cross click')">Edit</button>
     <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
   </div>
 </ng-template>

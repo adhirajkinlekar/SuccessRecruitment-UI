@@ -4,9 +4,10 @@
     "\\e2e",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\home",
+    "\\src\\app\\auth",
+    "\\src\\app\\auth\\sign-in",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\app.component.spec.ts",
+  "SelectedNode": "\\src\\app\\app.service.ts",
   "PreviewInSolutionExplorer": false
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddEditJobService } from './AddEditJob.service';
+import { JobService } from '../Job.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
@@ -18,36 +18,21 @@ export class AddEditJobComponent implements OnInit {
   success:string;
   formValue:any;
   isUpdate = false;
-  title = 'Add Job';
-  buttonText = 'Submit';
 
   jobForm = new FormGroup({
     EmployerId: new FormControl('',[Validators.required]),
     JobTitle: new FormControl('',[Validators.required]),
     Field: new FormControl('',[Validators.required]),
     JobLocation: new FormControl('',[Validators.required]),
-    JobDescription: new FormControl('')
+    JobDescription: new FormControl(''),
+    // testFormGroup: new FormGroup({
+    //   testname: new FormControl('')
+    // })
+    // It is also possible to have nested form groups. This group has to specified in the template using 'formGroupName="testFormGroup"'
 },{ validators: [this.selectValidator()]})
 
-  constructor(private service: AddEditJobService, private route: ActivatedRoute, public router: Router) {
-    this.recruiters = this.route.snapshot.data['Data'].$values; 
-    if(this.route.snapshot.paramMap.get('id')){
-      this.recruiters = this.route.snapshot.data['Data'][0].$values
-     this.formValue = this.route.snapshot.data['Data'][1];
-     this.isUpdate = true;
-     this.buttonText = 'Update'
-      this.jobForm.patchValue({
-        EmployerId:this.formValue?.recruiterId,
-        JobTitle:this.formValue?.jobTitle,
-        Field:this.formValue?.field,
-        JobLocation:this.formValue?.jobLocation,
-        JobDescription:this.formValue?.jobDescription,
-      });
-    }
-    else{
-      this.recruiters = this.route.snapshot.data['Data'].$values; 
-    }
-
+  constructor(private service: JobService, private route: ActivatedRoute, public router: Router) {
+   this.setFormValues();
   }
 
   ngOnInit(): void {
@@ -59,12 +44,29 @@ export class AddEditJobComponent implements OnInit {
       if(status === 'VALID'){
         this.error = null;
       }
-
     })
   }
 
+  setFormValues(){
+    this.recruiters = this.route.snapshot.data['Data'].$values; 
+    if(this.route.snapshot.paramMap.get('id')){
+      this.recruiters = this.route.snapshot.data['Data'][0].$values
+      this.formValue = this.route.snapshot.data['Data'][1];
+      this.isUpdate = true;
+      this.jobForm.patchValue({
+        EmployerId:this.formValue?.recruiterId,
+        JobTitle:this.formValue?.jobTitle,
+        Field:this.formValue?.field,
+        JobLocation:this.formValue?.jobLocation,
+        JobDescription:this.formValue?.jobDescription,
+      });
+    }
+    else{
+      this.recruiters = this.route.snapshot.data['Data'].$values; 
+    }
+  }
+
   selectValidator() {
-   
     return (form: FormGroup): { [key: string]: any } => {
       if (form.controls['EmployerId'].value == '') {
         return { 'length': true };
@@ -139,4 +141,6 @@ export class AddEditJobComponent implements OnInit {
        })
      }
   }
+
+ 
 }

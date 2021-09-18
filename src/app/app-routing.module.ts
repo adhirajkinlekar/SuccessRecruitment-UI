@@ -1,23 +1,26 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import {SignInComponent} from './auth/sign-in/sign-in.component'
-import {SignInResolver} from './auth/sign-in/Sign-In.resolver'
+import {SignInComponent} from './auth/sign-in/sign-in.component';
+import {SignInResolver} from './auth/sign-in/Sign-In.resolver';
+//Check if it would be better to have home module load eagerly
 const routes: Routes = [
   {
-    path:'home',
-    canLoad:[AuthGuard],
+    path:'',
+    canActivate:[AuthGuard],
     loadChildren: ()=> import('./home/home.module').then(m=> m.HomeModule)
   },
   {
-    path:'', component:SignInComponent,resolve: {
+    path:'signin', component:SignInComponent,resolve: {
       Data: SignInResolver
     }
-   } 
+   }
 ];
 //AuthGuard is an array so that we can have multiple guards
 @NgModule({
+   //imports: [RouterModule.forRoot(routes,{useHash:true})],
   imports: [RouterModule.forRoot(routes)],
+  providers:[AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

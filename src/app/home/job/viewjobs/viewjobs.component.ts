@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { JobService } from '../Job.service';
 
 @Component({
   selector: 'app-viewjobs',
@@ -13,7 +14,7 @@ export class ViewjobsComponent implements OnInit {
   jobs = [];
   selectedJob:any;
   filteredJobs = [];
-  constructor( private route: ActivatedRoute,private router:Router,config: NgbModalConfig, private modalService: NgbModal) { 
+  constructor( private route: ActivatedRoute,private router:Router,config: NgbModalConfig, private modalService: NgbModal,private service:JobService) { 
     config.backdrop = 'static';
     config.keyboard = false;
     this.jobs = this.route.snapshot.data['Data'].$values;
@@ -21,8 +22,14 @@ export class ViewjobsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //test event emitter using services. In this case while getting recruiters in addjobcomponent,even though this component is destroyed it still logs the value emmited from the service
+   //we can also emit the event from one component and subscribe in some other component
+    // this.service.testEvent.subscribe(
+    //   data=>{
+    //     console.log(data)
+    //   }
+    // )
   }
-
   filterJobs(value){
     this.filteredJobs = this.jobs.filter((job)=>{
       return job.jobTitle.toLowerCase().includes(value.toLowerCase()) ||
@@ -36,4 +43,5 @@ export class ViewjobsComponent implements OnInit {
     this.modalService.open(content);
   }
 
+ 
 }

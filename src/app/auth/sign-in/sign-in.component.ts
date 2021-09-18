@@ -20,7 +20,12 @@ export class SignInComponent implements OnInit {
   error:string;
  //Second parameter can be used to apply validation to the entire formgroup
  
-  constructor(private service:SignInService,private appService: AppService,private router: Router) {}
+  constructor(private service:SignInService,private appService: AppService,private router: Router) {
+    this.appService.checkUserAuthentication();
+    if(this.appService.isAuthenticated.value){
+      this.router.navigateByUrl('/');
+    }
+  }
 
   ngOnInit(): void {
     
@@ -49,7 +54,7 @@ export class SignInComponent implements OnInit {
          localStorage.setItem('USER_NAME',`${user.userName}`);
          localStorage.setItem('USER_ROLES',`${user.userRoles}`);
          this.appService.isAuthenticated.next(true);
-         this.router.navigateByUrl('/home');
+         this.router.navigateByUrl('/');
       },
       error=>{
           this.error = error.error;

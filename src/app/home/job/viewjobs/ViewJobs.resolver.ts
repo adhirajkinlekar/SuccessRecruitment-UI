@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import {AddEditJobService} from '../AddEditJobs/AddEditJob.service';
+import { JobService} from '../Job.service';
 import {Router} from '@angular/router';
 
 @Injectable({
@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 
 export class ViewJobsResolver implements Resolve<any> {
 
-constructor(private service: AddEditJobService,private router: Router) {}
+constructor(private service: JobService,private router: Router) {}
 
 resolve(route: ActivatedRouteSnapshot) {
    return this.service.getAllJobs();

@@ -7,7 +7,7 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 }
 )
-// if we do not use {providedIn: 'root'} then we would need to import the resolver in the app module
+// if we do not use {providedIn: 'root'} we can import the resolver in the app module
 export class HomeResolver implements Resolve<any> {
 
 constructor(private service: HomeService,private router: Router) {}

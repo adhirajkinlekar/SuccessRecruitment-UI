@@ -5,6 +5,7 @@ import { AddEditJobResolver } from './AddEditJobs/AddEditJob.resolver';
 import { ViewjobsComponent } from './viewjobs/viewjobs.component';
 import { ViewJobsResolver } from './viewjobs/ViewJobs.resolver';
 import {CanDeactivateGuard} from '../../Utilities/can-deactivate-guard.service'
+
 const routes: Routes = [{
     path:'AddJob',component:AddEditJobComponent,
     canDeactivate: [CanDeactivateGuard],resolve:{
@@ -24,10 +25,7 @@ const routes: Routes = [{
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: [ 
-    CanDeactivateGuard
-  ]
+  exports: [RouterModule]
 })
 export class JobRoutingModule { 
 }

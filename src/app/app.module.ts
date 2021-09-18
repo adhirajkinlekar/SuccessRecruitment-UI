@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from './auth/auth-interceptor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [

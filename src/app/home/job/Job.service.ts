@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class AddEditJobService {
+export class JobService {
 
   baseUrl = 'https://localhost:44308/Job'
+  testEvent = new EventEmitter<string>();
     constructor(private http:HttpClient){}
 
     getRecuiters(){
+      //this.testEvent.emit('Getting Recruiters');
       return this.http.get(`${this.baseUrl}/Recuiters`)
     }
-
     postJob(jobDetails){
       return this.http.post(`${this.baseUrl}/PublishJob`,jobDetails) // passing jobDetails as {jobDetails} will send an empty dto to the server
     }
@@ -19,7 +20,7 @@ export class AddEditJobService {
       return this.http.get(`${this.baseUrl}/AllJobs`)
     }
     getJobById(jobId){
-      return this.http.get(`${this.baseUrl}/Job/${jobId}`)
+      return this.http.get(`${this.baseUrl}/${jobId}`)
     }
     updateJob(jobDetails){
       return this.http.put(`${this.baseUrl}/UpdateJob`,jobDetails) 

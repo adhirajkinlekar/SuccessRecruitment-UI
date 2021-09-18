@@ -1,1 +1,22 @@
+<!-- <router-outlet 
+ (activate)="onOutletLoadedOrDestroyed($event)"
+ (deactivate)='onOutletLoadedOrDestroyed($event)' 
+ ></router-outlet> -->
+
 <router-outlet></router-outlet>
+<div class="spinner" *ngIf="service.showSpinner.value">
+    <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+          </div>
+</div>

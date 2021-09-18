@@ -67,10 +67,26 @@
           </div>
     </div>
 </div>
-        <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-          <span *ngIf="!isUpdate"> Submit</span>
-          <span *ngIf="isUpdate"> Update</span>
+        <button  [disabled]="jobForm.pristine || jobForm.invalid" type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+           <span *ngIf="isUpdate;else showSubmit"> Update</span>
+          <ng-template #showSubmit> <span> Submit</span> </ng-template>
           </button>
+          <!-- <ng-template [ngIf]="isUpdate"> <span> TEST </span> </ng-template> -->
+          <!-- ng-template content is only shown if it has a structural directive with property binding syntax  -->
 </div>
 </form>
 </div>
+
+
+<!-- *ngFor="let Control of signupForm.get('hobbies').controls; let i = index"
+
+This code will fail as of the latest Angular version.
+
+we can fix it easily by Outsourcing the "get the controls" logic into a method of your component code 
+
+getControls() {
+  return (<FormArray>this.signupForm.get('hobbies')).controls;
+}
+In the template, we can then use:
+
+*ngFor="let hobbyControl of getControls(); let i = index" -->
