@@ -18,7 +18,10 @@ export class ViewjobsComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
     this.jobs = this.route.snapshot.data['Data'].$values;
-    this.filterJobs('');
+    if(this.jobs){
+      this.filterJobs('');
+    }
+   
   }
 
   ngOnInit(): void {
@@ -26,7 +29,6 @@ export class ViewjobsComponent implements OnInit {
    //we can also emit the event from one component and subscribe in some other component
     // this.service.testEvent.subscribe(
     //   data=>{
-    //     console.log(data)
     //   }
     // )
   }

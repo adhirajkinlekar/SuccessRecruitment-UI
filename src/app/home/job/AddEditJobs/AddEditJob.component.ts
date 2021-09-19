@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { JobService } from '../Job.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -31,14 +31,19 @@ export class AddEditJobComponent implements OnInit {
     // It is also possible to have nested form groups. This group has to specified in the template using 'formGroupName="testFormGroup"'
 },{ validators: [this.selectValidator()]})
 
+//this is currently listening to browser events such as user manually entering a url or closing a tab
+  @HostListener('window:beforeunload',['$events']) unloadNotification($event){
+    if(!this.jobForm.pristine){
+       $event.returnValue == true;
+    }
+  }
   constructor(private service: JobService, private route: ActivatedRoute, public router: Router) {
-   this.setFormValues();
+    this.setFormValues();
   }
 
   ngOnInit(): void {
     // following highlighted code is unrelated and just placed here to show the funtioning of valuechanges and status changes
     // this.jobForm.valueChanges.subscribe(data=>{
-    //   console.log('fired');
     // })
     this.jobForm.statusChanges.subscribe(status=>{
       if(status === 'VALID'){
@@ -46,9 +51,15 @@ export class AddEditJobComponent implements OnInit {
       }
     })
   }
+  showPage(){
+    if((this.isUpdate) && (this.route.snapshot.data['Data'][1].error)){
+    return false;
+    }
+
+    return true;
+  }
 
   setFormValues(){
-    this.recruiters = this.route.snapshot.data['Data'].$values; 
     if(this.route.snapshot.paramMap.get('id')){
       this.recruiters = this.route.snapshot.data['Data'][0].$values
       this.formValue = this.route.snapshot.data['Data'][1];
@@ -94,7 +105,7 @@ export class AddEditJobComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.jobForm.reset();
-        this.router.navigateByUrl(url)
+          this.router.navigateByUrl(url)
       } 
     })
   }
@@ -112,11 +123,10 @@ export class AddEditJobComponent implements OnInit {
     }
 
     if(this.isUpdate){
-      let updateJobDto = this.jobForm.value;
-      updateJobDto.jobId = this.formValue.jobId;
-       this.service.updateJob(this.jobForm.value).subscribe(
-        isUpdated=>{
-          if(isUpdated){
+      let updateJobDto = Object.assign(this.jobForm.value,{jobId:this.formValue.jobId})
+       this.service.updateJob(updateJobDto).subscribe(
+        data=>{
+          if(data.body){
             this.success = "Job has been successfully Updated";
             for (let c in this.jobForm.controls) {
               this.jobForm.controls[c].markAsPristine();

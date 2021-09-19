@@ -1,4 +1,4 @@
-<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
+<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;" *ngIf="showPage() else showError">
   <div class="card-header" *ngIf="!isUpdate">Add Job</div>
   <div class="card-header" *ngIf="isUpdate">Edit Job - {{formValue?.jobTitle}}</div>
   <div class="alert alert-danger" role="alert" *ngIf="error">
@@ -76,6 +76,11 @@
 </div>
 </form>
 </div>
+
+<ng-template #showError> 
+  <div class="alert alert-danger text-center" role="alert">
+  Job not found
+</div> </ng-template> 
 
 
 <!-- *ngFor="let Control of signupForm.get('hobbies').controls; let i = index"

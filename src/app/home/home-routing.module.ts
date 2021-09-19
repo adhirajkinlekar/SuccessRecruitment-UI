@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { HomeComponent } from './home.component';
 import { HomeResolver } from './home.resolver';
+import { NotfoundComponent } from './notfound/notfound.component';
 const routes: Routes = [{
   path:'',component:HomeComponent,resolve:{
     Pages:HomeResolver
@@ -11,15 +12,16 @@ const routes: Routes = [{
       path: 'Job',loadChildren: ()=>  import('./job/job.module').then((m)=> m.JobModule)
     },
     {
-      path:'unauthorized',component:UnauthorizedComponent,data:{ message:'not authorized' }
+      path:'unauthorized',component:UnauthorizedComponent
+  },
+  {
+    path: 'not-found',component:NotfoundComponent
   }  
   ]
 } 
-// ,
-// { path: '**', redirectTo: '/' }
 ];
 
-//wildcard route has to always be last in the array
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

@@ -11,13 +11,15 @@ const routes: Routes = [
   },
   {
     path:'signin', component:SignInComponent
-   }
+   },
+   { path: '**', redirectTo: '/not-found' }
+   //point to note- adding wildcard route in home module makes the app sent requests to the server forever. need to research about this.It is quite possible that wildcard route not
+   //only has to be the last in the array but also last in the rootmodule route array
 ];
 //AuthGuard is an array so that we can have multiple guards
 @NgModule({
    //imports: [RouterModule.forRoot(routes,{useHash:true})],
   imports: [RouterModule.forRoot(routes)],
-  providers:[AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,13 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\e2e",
     "\\src",
     "\\src\\app",
     "\\src\\app\\auth",
     "\\src\\app\\auth\\sign-in",
+    "\\src\\app\\home",
+    "\\src\\app\\home\\job",
+    "\\src\\app\\home\\job\\AddEditJobs",
+    "\\src\\app\\home\\unauthorized",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\auth\\sign-in\\sign-in.component.ts",
+  "SelectedNode": "\\src\\app\\home\\unauthorized\\unauthorized.component.ts",
   "PreviewInSolutionExplorer": false
 }

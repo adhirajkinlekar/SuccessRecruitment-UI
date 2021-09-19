@@ -1,6 +1,6 @@
-<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
+<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;" *ngIf="jobs else noJobsFound">
   <div class="card-header">Jobs</div>
-    <input class="form-control me-2 mb-1" type="search" (input)="filterJobs($event.target.value)" placeholder="Search by Recuiter Name, Field, Location, Job Title" aria-label="Search">
+    <input  class="form-control me-2 mb-1" type="search" (input)="filterJobs($event.target.value)" placeholder="Search by Recuiter Name, Field, Location, Job Title" aria-label="Search">
   <ol class="list-group list-group-numbered">
     <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let job of filteredJobs">
     
@@ -12,7 +12,10 @@
     </li>
   </ol>
 </div>
-
+<ng-template #noJobsFound> 
+  <div class="alert alert-danger text-center" role="alert">
+  No jobs to display
+</div> </ng-template> 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">{{selectedJob.jobTitle}}</h4>

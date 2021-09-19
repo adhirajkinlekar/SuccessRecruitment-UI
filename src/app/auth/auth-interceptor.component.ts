@@ -36,7 +36,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             }
           }, (err: any) => {
             if (err instanceof HttpErrorResponse) {
-              
+              //use switch case here
               if (err.status === 403) {
                 this.router.navigate(['/unauthorized'])
               }

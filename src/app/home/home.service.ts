@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 export class HomeService {
 
   baseUrl = 'https://localhost:44308/home';
-  constructor(private http:HttpClient) { }
-  tabs = [];
+  constructor(private http:HttpClient) { };
+  
   getAppInformation(){
    return this.http.get<any>(`${this.baseUrl}`);
   }

@@ -9,6 +9,7 @@ export class AppService {
   baseUrl = 'https://localhost:44308/Auth';
   isAuthenticated = new BehaviorSubject(false);
   showSpinner = new BehaviorSubject(false)
+  
   constructor(private http:HttpClient) { }
 
   checkUserAuthentication(){
