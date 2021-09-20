@@ -8,9 +8,8 @@
     "\\src\\app\\home",
     "\\src\\app\\home\\job",
     "\\src\\app\\home\\job\\AddEditJobs",
-    "\\src\\app\\home\\unauthorized",
-    "\\src\\assets"
+    "\\src\\app\\home\\unauthorized"
   ],
-  "SelectedNode": "\\src\\assets\\favicon.png",
+  "SelectedNode": "\\src\\app\\auth\\sign-in\\sign-in.component.ts",
   "PreviewInSolutionExplorer": false
 }
