@@ -1,24 +1,26 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AppService } from 'src/app/app.service';
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
 
   baseUrl = 'https://localhost:44308/Job'
+  //baseUrl = 'http://successrecruitment.somee.com/Job';
   testEvent = new EventEmitter<string>();
-    constructor(private http:HttpClient){}
+    constructor(private http:HttpClient,private appService:AppService){}
 
 
     getRecuiters(){
       //this.testEvent.emit('Getting Recruiters');
-      return this.http.get(`${this.baseUrl}/Recuiters`)
+      return this.http.get(`${this.appService.baseUrl}/Job/Recuiters`)
     }
     postJob(jobDetails){
-      return this.http.post(`${this.baseUrl}/PublishJob`,jobDetails) // passing jobDetails as {jobDetails} will send an empty dto to the server
+      return this.http.post(`${this.appService.baseUrl}/Job/PublishJob`,jobDetails) // passing jobDetails as {jobDetails} will send an empty dto to the server
     }
     getAllJobs(){
-      return this.http.get(`${this.baseUrl}/AllJobs`,{
+      return this.http.get(`${this.appService.baseUrl}/Job/AllJobs`,{
         responseType:'json' //we can also set the response type to text/blob etc
       }
       // ,{
@@ -33,10 +35,10 @@ export class JobService {
       // return this.http.get(`${this.baseUrl}/${jobId}`,{
       //   params:  params})
 
-      return this.http.get(`${this.baseUrl}/${jobId}`)
+      return this.http.get(`${this.appService.baseUrl}/Job/${jobId}`)
     }
     updateJob(jobDetails){ 
-      return this.http.put(`${this.baseUrl}/UpdateJob`,jobDetails 
+      return this.http.put(`${this.appService.baseUrl}/Job/UpdateJob`,jobDetails 
       ,{
           observe:'response'
         })

@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
         localStorage.removeItem('JWT_TOKEN')
         this.appService.isAuthenticated.next(false);
         this.router.navigateByUrl('/signin');
-        this.service.tabs = [];
+        this.tabs = [];
       } 
     })
   

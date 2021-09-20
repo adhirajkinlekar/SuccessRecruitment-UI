@@ -1,21 +1,21 @@
 <div class="signInContainer">
     <div class="card">
-        <img width="300px" class="cardBackground" src="../../../assets/logo.png">
-        <div class="error" *ngIf="error">{{error}}</div>
+        <img width="300px" class="cardBackground" src="../../../assets/signInLogo.png">
+        <div class="alert alert-danger error" *ngIf="error">{{error}}</div>
         <form [formGroup]="authForm" (submit)="onSubmit()">
             <div class="signInForm">
                 <ng-container *ngIf="authForm.controls.email.errors">
-                    <div class="error" *ngIf="authForm.controls.email.touched &&  authForm.controls.email.errors.required">
+                    <div class="alert alert-danger error" *ngIf="authForm.controls.email.touched &&  authForm.controls.email.errors.required">
                         Email is required
                     </div>
                 </ng-container>
              <input formControlName="email" type="email">
              <label>Email</label>
              <ng-container *ngIf="authForm.controls.password.errors">
-             <div class="error" *ngIf="authForm.controls.password.touched &&  authForm.controls.password.errors.required">
+             <div class="alert alert-danger error" *ngIf="authForm.controls.password.touched &&  authForm.controls.password.errors.required">
                 Password is required
             </div>
-            <div class="error" *ngIf="authForm.controls.password.touched &&  authForm.controls.password.errors.minlength">
+            <div class="alert alert-danger error" *ngIf="authForm.controls.password.touched &&  authForm.controls.password.errors.minlength">
                password has to be atleast 4 characters long
             </div>
         </ng-container>

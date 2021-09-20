@@ -137,3 +137,10 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.power-off{
+  color:rgb(194, 96, 78);
+}
+.power-off:hover{
+  color:rgb(185, 65, 44);
+}

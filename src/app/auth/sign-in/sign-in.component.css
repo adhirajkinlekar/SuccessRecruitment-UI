@@ -44,10 +44,10 @@ input {
         cursor: pointer;
       }
       
-      input[type=submit]:hover {
-        background-color: #2b2b2b;
-      }
       
 .error{
-    color: red;
+ height: 7px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }

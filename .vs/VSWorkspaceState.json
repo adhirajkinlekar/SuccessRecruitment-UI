@@ -11,6 +11,6 @@
     "\\src\\app\\home\\unauthorized",
     "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\home\\unauthorized\\unauthorized.component.ts",
+  "SelectedNode": "\\src\\app\\auth\\sign-in\\sign-in.component.ts",
   "PreviewInSolutionExplorer": false
 }
