@@ -17,12 +17,12 @@ export class AppService {
 
   loadAppConfig() {
     console.log(environment.production)
-        if(environment.production){
+        if(!environment.production){
            this.baseUrl= 'https://successrecruitment.herokuapp.com'
         }
-        else{
-          this.baseUrl = 'https://localhost:44308'
-        }
+        // else{
+        //   this.baseUrl = 'https://localhost:44308'
+        // }
   }
 
   checkUserAuthentication(){
