@@ -7,7 +7,7 @@ import {environment} from '../environments/environment'
   providedIn: 'root'
 })
 export class AppService {
-  //private baseUrl;
+  
   baseUrl:string;
   //baseUrl = 'http://successrecruitment.somee.com/Auth';
   isAuthenticated = new BehaviorSubject(false);
@@ -16,13 +16,13 @@ export class AppService {
   constructor(private http:HttpClient,private injector: Injector) { }
 
   loadAppConfig() {
-    console.log(process.env)
-        if(!environment.production){
+    console.log(environment.production)
+        if(environment.production){
            this.baseUrl= 'https://successrecruitment.herokuapp.com'
         }
-        // else{
-        //   this.baseUrl = 'https://localhost:44308'
-        // }
+        else{
+          this.baseUrl = 'https://localhost:44308'
+        }
   }
 
   checkUserAuthentication(){
