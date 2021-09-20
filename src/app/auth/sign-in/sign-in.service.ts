@@ -11,11 +11,11 @@ export class SignInService {
   constructor(private http:HttpClient,private appService:AppService) { }
 
   signIn(credentials){
-    return this.http.post<any>(`${this.appService}/login`,credentials)
+    return this.http.post<any>(`${this.appService.baseUrl}/Auth/login`,credentials)
   }
 
-  getJobs(){
-    return this.http.get(`${this.appService}/Job/GetJobsByUser`)
-  }
+  // getJobs(){
+  //   return this.http.get(`${this.appService.baseUrl}/Job/GetJobsByUser`)
+  // }
   
 }

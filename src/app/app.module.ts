@@ -10,7 +10,6 @@ import { AppService } from './app.service';
 
 
 const appInitializerFn = (service: AppService) => {
-  console.log("Initializing");
   return () => {
     return service.loadAppConfig();
   }

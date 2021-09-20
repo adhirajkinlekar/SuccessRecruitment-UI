@@ -16,7 +16,7 @@ export class AppService {
   constructor(private http:HttpClient,private injector: Injector) { }
 
   loadAppConfig() {
-    let http = this.injector.get(HttpClient); 
+    console.log(environment.production)
         if(environment.production){
            this.baseUrl= 'https://successrecruitment.herokuapp.com'
         }
