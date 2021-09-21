@@ -44,6 +44,4 @@ export class ViewjobsComponent implements OnInit {
     this.selectedJob = job
     this.modalService.open(content);
   }
-
- 
 }

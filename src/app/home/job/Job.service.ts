@@ -6,8 +6,7 @@ import { AppService } from 'src/app/app.service';
 })
 export class JobService {
 
-  baseUrl = 'https://localhost:44308/Job'
-  testEvent = new EventEmitter<string>();
+    //testEvent = new EventEmitter<string>();
     constructor(private http:HttpClient,private appService:AppService){}
 
 

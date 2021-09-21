@@ -38,7 +38,11 @@ export class AddEditJobComponent implements OnInit {
     }
   }
   constructor(private service: JobService, private route: ActivatedRoute, public router: Router) {
-    this.setFormValues();
+    this.recruiters = this.route.snapshot.data['Data'][0].$values; 
+    if(this.route.snapshot.paramMap.get('id')){
+      this.setFormValues();
+    }
+    
   }
 
   ngOnInit(): void {
@@ -52,7 +56,7 @@ export class AddEditJobComponent implements OnInit {
     })
   }
   showPage(){
-    if((this.isUpdate) && (this.route.snapshot.data['Data'][1].error)){
+    if((this.isUpdate) && (!this.route.snapshot.data['Data'][1])){
     return false;
     }
 
@@ -60,10 +64,8 @@ export class AddEditJobComponent implements OnInit {
   }
 
   setFormValues(){
-    if(this.route.snapshot.paramMap.get('id')){
-      this.recruiters = this.route.snapshot.data['Data'][0].$values
+      this.isUpdate = true; 
       this.formValue = this.route.snapshot.data['Data'][1];
-      this.isUpdate = true;
       this.jobForm.patchValue({
         EmployerId:this.formValue?.recruiterId,
         JobTitle:this.formValue?.jobTitle,
@@ -71,10 +73,6 @@ export class AddEditJobComponent implements OnInit {
         JobLocation:this.formValue?.jobLocation,
         JobDescription:this.formValue?.jobDescription,
       });
-    }
-    else{
-      this.recruiters = this.route.snapshot.data['Data'].$values; 
-    }
   }
 
   selectValidator() {

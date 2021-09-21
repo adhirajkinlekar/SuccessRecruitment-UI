@@ -3,7 +3,7 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { JobService} from '../Job.service';
 import {Router} from '@angular/router';
 import {forkJoin} from 'rxjs';
-import { map ,catchError} from 'rxjs/operators';
+import { catchError} from 'rxjs/operators';
 import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,6 @@ constructor(private service: JobService,private router: Router) {
 
 resolve(route: ActivatedRouteSnapshot) {
   const jobId = route.params['id'];
-  if(route.queryParams.isEdit == 'true'){
        return forkJoin([
         this.service.getRecuiters().pipe(
           catchError((error) => {
@@ -26,23 +25,13 @@ resolve(route: ActivatedRouteSnapshot) {
             return of({ recruiters: null, error: message });
           }),
         ),
-        this.service.getJobById(jobId).pipe(
+        route.queryParams.isEdit == 'true'?  this.service.getJobById(jobId).pipe(
           catchError((error) => {
-            console.log(error)
             const message = `Retrieval error: ${error}`;
             return of({ formValues: null, error: message });
           }),
-        )
+        ) : of(null)
       ])
-  }
-  else{
-    return this.service.getRecuiters().pipe(
-      catchError((error) => {
-        const message = `Retrieval error: ${error}`;
-        return of({ recruiters: null, error: message });
-      }),
-    );
-  }
   }
  
 }

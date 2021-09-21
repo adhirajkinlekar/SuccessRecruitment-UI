@@ -1,12 +1,13 @@
+ 
  <div class="page-wrapper toggled">
-    <nav id="sidebar" class="sidebar-wrapper">
+    <nav class="sidebar-wrapper">
       <div class="sidebar-content">
         <div routerLink="/" class="sidebar-brand" style="height: 105px; cursor: pointer;" >
         
         </div>
         <div class="sidebar-header">
           
-          <div class="user-info" #test>
+          <div class="user-info">
             <span class="user-name"><strong>{{userName}}</strong></span>
             <span class="user-role">{{userRoles}}</span>
           </div>
@@ -15,7 +16,7 @@
           </div>
         </div>
  
-        <div #container #Items class="sidebar-menu">
+        <div class="sidebar-menu">
           <ul>
             <div class="header-menu" *ngFor="let tab of tabs"><span class="tab" [routerLink]="tab.pageLink" >{{tab.pageName}}</span>
             <li class="sidebar-dropdown " *ngFor="let subPage of tab.subPages;let i = index">
@@ -42,5 +43,4 @@
           </router-outlet>
       </div>
     </main>
-  </div>
-  
+</div>

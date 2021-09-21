@@ -12,6 +12,9 @@ const routes: Routes = [{
       path: 'Job',loadChildren: ()=>  import('./job/job.module').then((m)=> m.JobModule)
     },
     {
+      path: 'Users', loadChildren :()=> import('./user/user.module').then((m)=> m.UserModule)
+    },
+    {
       path:'unauthorized',component:UnauthorizedComponent
   },
   {

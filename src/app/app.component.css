@@ -9,12 +9,22 @@ body{
         padding: 0;
         margin: 0;
 }
+  
+.spinner{
+  width: 100%;
+  height: 100vh;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+}
 .lds-spinner {
     color: official;
     width: 20%;
     position: relative;
-    left: 45%;
-    top: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right:  30px;
   }
   .lds-spinner div {
     transform-origin: 40px 40px;
@@ -87,9 +97,3 @@ body{
       opacity: 0;
     }
   }
-  
-.spinner{
-  width: 100%;
-  height: 100vh;
-  opacity: 0.8;
-}
