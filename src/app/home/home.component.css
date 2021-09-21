@@ -1,35 +1,26 @@
 
 .page-wrapper {
-  height: 98vh;
-  background:rgb(236, 235, 235);
-  width: 85%;
-  float: right;
-  position: fixed;
-  top: 10;
-  left: 277px;
-  border-radius: 8px;
-  margin-top: 10px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
 }
 
-.page-wrapper.toggled .sidebar-wrapper {
+ .sidebar-wrapper {
   left: 0px;
-}
-@media screen and (min-width: 768px) {
-  .page-wrapper.toggled .page-content {
-    padding-left: 300px;
-  }
 }
 
 
 
 .sidebar-wrapper {
-  width: 267px;
+  min-width: 267px;
   background: #1d1d1d;
   height: 100%;
   max-height: 100%;
-  position: fixed;
-  top: 0;
-  left: -300px;
+}
+.content{
+  width: 100%;
+  margin: 8px;
+  background:rgb(236, 235, 235);
 }
 
 .sidebar-wrapper ul {
@@ -42,7 +33,7 @@
 }
 
 
-.sidebar-wrapper .sidebar-brand {
+.sidebar-brand {
   padding: 15px 20px;
   text-align: center;
   background: url('../../assets/logo.png');
@@ -56,7 +47,7 @@
   font-weight: bold;
 }
 
-.sidebar-wrapper .sidebar-header {
+ .sidebar-header {
   padding: 20px;
   overflow: hidden;
   border-top: 1px solid #2b2b2b;
