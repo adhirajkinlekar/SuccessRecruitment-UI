@@ -8,10 +8,9 @@ import { AuthHttpInterceptor } from './auth/auth-interceptor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppService } from './app.service';
 
-
-const appInitializerFn = (service: AppService) => {
+const initializeApp = (service: AppService) => {
   return () => {
-    return service.loadAppConfig();
+     service.setBaseUrl();
   }
 };
 
@@ -28,7 +27,7 @@ const appInitializerFn = (service: AppService) => {
   ],
   providers: [ {
     provide: APP_INITIALIZER,
-    useFactory: appInitializerFn,
+    useFactory: initializeApp,
     multi: true,
     deps: [AppService]
   },{

@@ -1,22 +1,21 @@
-import { EventEmitter, Injectable,Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import {environment} from '../environments/environment'
+
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   
   baseUrl:string;
-  //baseUrl = 'http://successrecruitment.somee.com/Auth';
   isAuthenticated = new BehaviorSubject(false);
   showSpinner = new BehaviorSubject(false)
   
-  constructor(private http:HttpClient,private injector: Injector) { }
+  constructor(private http:HttpClient) { }
 
-  loadAppConfig() {
-    console.log(environment.production)
+  setBaseUrl() {
         if(environment.production){
            this.baseUrl= 'https://successrecruitment.herokuapp.com'
         }

@@ -7,6 +7,7 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'SuccessRecruitment'
   constructor(public service:AppService){
 
   }

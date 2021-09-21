@@ -6,16 +6,10 @@ import { AppService } from 'src/app/app.service';
   providedIn: 'root'
 })
 export class SignInService {
-//  baseUrl = 'https://localhost:44308/Auth';
- // baseUrl = 'http://successrecruitment.somee.com/Auth';
   constructor(private http:HttpClient,private appService:AppService) { }
 
   signIn(credentials){
     return this.http.post<any>(`${this.appService.baseUrl}/Auth/login`,credentials)
   }
-
-  // getJobs(){
-  //   return this.http.get(`${this.appService.baseUrl}/Job/GetJobsByUser`)
-  // }
   
 }

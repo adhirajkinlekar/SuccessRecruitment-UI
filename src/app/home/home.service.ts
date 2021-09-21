@@ -7,7 +7,7 @@ import { AppService } from '../app.service';
 export class HomeService {
 
   baseUrl = 'https://localhost:44308/home';
-  //baseUrl = 'http://successrecruitment.somee.com/home';
+  
   constructor(private http:HttpClient,private appService:AppService) { };
   
   getAppInformation(){
