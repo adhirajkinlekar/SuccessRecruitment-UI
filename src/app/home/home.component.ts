@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
   }
 
   hideNavbar(){
-    if(this.screenWidth<768){
+    if(window.innerWidth<768){
       if(this.hamburger.nativeElement.classList.contains('open')){
         this.hamburger.nativeElement.classList.remove('open')
         this.sideBar.nativeElement.classList.add('show-sidebar-wrapper')

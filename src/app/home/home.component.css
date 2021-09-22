@@ -77,6 +77,7 @@
 }
 .sidebar-menu::-webkit-scrollbar {
   width: 4px;
+  
 }
  
 .sidebar-menu::-webkit-scrollbar-track {
@@ -84,7 +85,7 @@
 }
  
 .sidebar-menu::-webkit-scrollbar-thumb {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(206, 122, 122);
   outline: 0.5px solid rgb(45, 46, 48);
 }
 .sidebar-menu::-webkit-scrollbar-corner{
@@ -183,7 +184,7 @@
     height: 25vh;
   }
   .sidebar-menu{
-    height: 75vh;
+    height: 72vh;
   }
 }
 
@@ -193,7 +194,7 @@
     height: 20vh;
   }
   .sidebar-menu{
-    height: 80vh;
+    height: 78vh;
   }
 }
 @media only screen and (min-width: 1024px) {
@@ -202,7 +203,16 @@
     height: 15vh;
   }
   .sidebar-menu{
-    height: 85vh;
+    height: 78vh;
+  }
+}
+@media only screen and (min-width: 1536px) {
+ 
+  .sidebar-menu-header{
+    height: 25vh;
+  }
+  .sidebar-menu{
+    height: 78vh;
   }
 }
 
@@ -212,7 +222,7 @@
     height: 20vh;
   }
   .sidebar-menu{
-    height: 80vh;
+    height: 78vh;
   }
 }
 
