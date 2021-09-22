@@ -21,10 +21,14 @@ export class SignInComponent implements OnInit {
  //Second parameter can be used to apply validation to the entire formgroup
  
   constructor(private service:SignInService,private appService: AppService,private router: Router) {
-    this.appService.checkUserAuthentication();
-    if(this.appService.isAuthenticated.value){
-      this.router.navigateByUrl('/');
-    }
+    this.appService.checkUserAuthentication().subscribe(
+      ()=>{
+        if(this.appService.isAuthenticated.value){
+          this.router.navigateByUrl('/');
+        }
+      }
+    )
+  
   }
 
   ngOnInit(): void {
