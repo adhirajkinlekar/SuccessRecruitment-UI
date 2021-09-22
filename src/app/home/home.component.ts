@@ -94,15 +94,18 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit(){
   //  console.log(this.Container)
   //  console.log(this.Items)
+  if(window.innerWidth<768){
+    this.expandMenu("Jobs")
+  }
   }
 
   // @HostListener('mouseenter') mouseover(event:Event){
   //   //added for learning purposes only. A better or actual use for this would be by creating a directive and then using the hostlistener inside it since we get the elements reference
   // }
 
-  expandMenu($event,i) {
-    this.Menu.toArray().forEach((ele,i)=>{
-      if(ele.nativeElement.id == $event.srcElement.innerText){
+  expandMenu(pageName) {
+    this.Menu.toArray().forEach((ele)=>{
+      if(ele.nativeElement.id == pageName){
         if(ele.nativeElement.classList.contains('hidesubmenu')){
           
           ele.nativeElement.classList.remove('hidesubmenu')
