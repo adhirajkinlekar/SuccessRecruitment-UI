@@ -135,6 +135,7 @@
   bottom: 60px; 
   right: 20px;
   z-index: 1;
+  display: none;
 }
 
 @media only screen and (max-width: 767px) {
@@ -143,6 +144,9 @@
     top: 0px; 
     left: 0px;
     z-index: 1;
+  }
+  .hamburger{
+    display: block;
   }
 }
 
