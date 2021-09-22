@@ -71,7 +71,7 @@
  
 }
 .sidebar-menu{
-  overflow: scroll;
+  overflow-y: scroll;
   height: 70vh;
   max-height: 70%;
 }
