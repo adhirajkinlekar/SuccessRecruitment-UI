@@ -71,9 +71,11 @@
  
 }
 .sidebar-menu{
+  overflow-x: hidden;
   overflow-y: scroll;
   height: 70vh;
   max-height: 70%;
+  max-width: 100%;
 }
 .sidebar-menu::-webkit-scrollbar {
   width: 4px;
