@@ -1,7 +1,7 @@
 
 .page-wrapper {
-  height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100vh;  
+  max-height: -webkit-fill-available;
   width: 100%;
   display: flex;
 }
@@ -10,7 +10,6 @@
   min-width: 267px;
   background: #1d1d1d;
   height: 100%;
-  min-height: -webkit-fill-available;
   max-height: 100%;
   left: 0px;
 }
@@ -19,7 +18,6 @@
   margin: 8px;
   background:rgb(236, 235, 235);
   border-radius: 8px;
-  min-height: -webkit-fill-available;
 }
 
 .sidebar-wrapper ul {
@@ -27,6 +25,7 @@
   padding: 0;
   margin: 0;
 }
+
 .sidebar-wrapper a {
   text-decoration: none;
 }
