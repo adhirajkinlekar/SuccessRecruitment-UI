@@ -162,7 +162,7 @@
   position: absolute; 
   bottom: 60px; 
   right: 20px;
-  z-index: 1;
+  z-index: 2;
   display: none;
 }
 
@@ -253,7 +253,7 @@
   position: absolute;
   height: 5px;
   width: 100%;
-  background: black;
+  background:cornflowerblue;
   border-radius: 9px;
   opacity: 1;
   left: 0;
