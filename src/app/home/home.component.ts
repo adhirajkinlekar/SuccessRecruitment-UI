@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;  
+    console.log(this.screenWidth)
     this.screenHeight = window.innerHeight;  
    this.userName = localStorage.getItem('USER_NAME');
    this.userRoles = localStorage.getItem('USER_ROLES')
@@ -107,7 +108,7 @@ export class HomeComponent implements OnInit {
           ele.nativeElement.classList.remove('hidesubmenu')
         }
         else{
-          ele.nativeElement.classList
+          ele.nativeElement.classList.add('hidesubmenu')
         }
       }
     })
