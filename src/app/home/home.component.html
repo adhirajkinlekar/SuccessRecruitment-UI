@@ -1,6 +1,15 @@
- 
+
  <div class="page-wrapper toggled">
-    <nav class="sidebar-wrapper">
+   <!--<i class="fa fa-expand expandIcon" style="color:white" aria-hidden="true"></i> -->
+  <div  class="hamburger" *ngIf="this.screenWidth < 768" >
+    <div #hamburger id="nav-icon1" class="open" (click)="hideNavbar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+  </div>
+    <nav #sideBar class="sidebar-wrapper">
       <div class="sidebar-content">
         <div routerLink="/" class="sidebar-brand" style="height: 105px; cursor: pointer;" >
         
@@ -23,7 +32,7 @@
               <a ><span class="subPage" (click)="expandMenu($event,i)">{{subPage.pageName}}</span></a>
               <!-- routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" -->
               <!-- [queryParams]="{allowEdit:true}" can be added alongside routerlink. These can be accessed from activatedRoute-->
-              <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages"  [routerLink]="childPage.pageLink" [queryParams]="showQueryParams(childPage.pageLink)"   class="hidesubmenu" #Menu id="{{subPage.pageName}}">
+              <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages" (click)="hideNavbar()" [routerLink]="childPage.pageLink" [queryParams]="showQueryParams(childPage.pageLink)"   class="hidesubmenu" #Menu id="{{subPage.pageName}}">
                 <ul>
                   <li>
                       <a><span class="childPage">{{childPage.pageName}}</span></a>

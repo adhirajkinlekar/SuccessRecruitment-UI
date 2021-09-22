@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   // @ViewChildren("container") private Container: ViewContainerRef; 
   // @ViewChild("Items") private Items: TemplateRef<any>; 
-  //@ViewChild('test', { read: ElementRef, static:false }) test: ElementRef; 
+  @ViewChild('hamburger', { read: ElementRef, static:false }) hamburger: ElementRef; 
+  @ViewChild('sideBar', { read: ElementRef, static:false }) sideBar: ElementRef; 
   @ViewChildren("Menu") private Menu: QueryList<ElementRef>; // For list of elements  
   // @Output() user = new EventEmitter();
   // @Output() user = new EventEmitter<{name:string,roles:string}>();
@@ -23,13 +24,19 @@ export class HomeComponent implements OnInit {
   //  { static: true } as a second argument needs to be applied to ALL usages of @ViewChild() (and also @ContentChild() 
  //if you plan on accessing the selected element inside of ngOnInit().
 // If you DON'T access the selected element in ngOnInit (but anywhere else in your component), set static: false instead!
-
+  screenWidth: any;  
+  screenHeight: any;  
   userName:string;
   userRoles:string;
   tabs = [];
   constructor(private route: ActivatedRoute,public service:HomeService,public appService:AppService, private router: Router) {}
 
+
+
+
   ngOnInit(): void {
+    this.screenWidth = window.innerWidth;  
+    this.screenHeight = window.innerHeight;  
    this.userName = localStorage.getItem('USER_NAME');
    this.userRoles = localStorage.getItem('USER_ROLES')
   //  this.user.emit({
@@ -100,7 +107,7 @@ export class HomeComponent implements OnInit {
           ele.nativeElement.classList.remove('hidesubmenu')
         }
         else{
-          ele.nativeElement.classList.add('hidesubmenu')
+          ele.nativeElement.classList
         }
       }
     })
@@ -128,6 +135,19 @@ export class HomeComponent implements OnInit {
   showQueryParams(page){
     if(page === 'Job/AddJob'){
       return {isEdit:false}
+    }
+  }
+
+  hideNavbar(){
+    if(this.screenWidth<768){
+      if(this.hamburger.nativeElement.classList.contains('open')){
+        this.hamburger.nativeElement.classList.remove('open')
+        this.sideBar.nativeElement.classList.add('show-sidebar-wrapper')
+      }
+      else{
+        this.hamburger.nativeElement.classList.add('open')
+        this.sideBar.nativeElement.classList.remove('show-sidebar-wrapper')
+      }
     }
   }
 }
