@@ -29,14 +29,14 @@ export class HomeComponent implements OnInit {
   userName:string;
   userRoles:string;
   tabs = [];
-  constructor(private route: ActivatedRoute,public service:HomeService,public appService:AppService, private router: Router) {}
+  constructor(private route: ActivatedRoute,public service:HomeService,public appService:AppService, private router: Router) {
+  }
 
 
 
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;  
-    console.log(this.screenWidth)
     this.screenHeight = window.innerHeight;  
    this.userName = localStorage.getItem('USER_NAME');
    this.userRoles = localStorage.getItem('USER_ROLES')

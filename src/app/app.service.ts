@@ -23,6 +23,10 @@ export class AppService {
           this.baseUrl = 'https://localhost:44308'
         }
   }
+  setAppHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+}
 
   checkUserAuthentication(){
   return this.http.get<any>(`${this.baseUrl}/Auth/IsAuthenticated`).pipe(
