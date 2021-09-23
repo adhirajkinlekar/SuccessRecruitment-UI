@@ -8,7 +8,7 @@ body{
         box-sizing: border-box;
         padding: 0;
         margin: 0;
-        overflow-x: scroll;   /*  this property was added to disable scrolling for body */
+        height: 100%;
          /* width: 100vw;
         height: 100vh;
     
@@ -18,6 +18,7 @@ body{
 }
 :root {
   /* --app-height: 100%; */
+  height: 100%;
 }
 .spinner{
   position: absolute; top: 0px; 
