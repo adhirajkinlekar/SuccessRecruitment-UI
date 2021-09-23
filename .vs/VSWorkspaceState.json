@@ -6,10 +6,11 @@
     "\\src\\app\\auth",
     "\\src\\app\\auth\\sign-in",
     "\\src\\app\\home",
+    "\\src\\app\\home\\appointments",
     "\\src\\app\\home\\job",
     "\\src\\app\\home\\job\\AddEditJobs",
     "\\src\\app\\home\\unauthorized"
   ],
-  "SelectedNode": "\\src\\app\\app.component.spec.ts",
+  "SelectedNode": "\\src\\app\\home\\job",
   "PreviewInSolutionExplorer": false
 }
