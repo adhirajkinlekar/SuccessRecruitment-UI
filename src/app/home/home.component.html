@@ -31,7 +31,7 @@
           <ul>
             <div class="header-menu" *ngFor="let tab of tabs"><span class="tab" [routerLink]="tab.pageLink" >{{tab.pageName}}</span>
             <li class="sidebar-dropdown " *ngFor="let subPage of tab.subPages;let i = index">
-              <a ><span class="subPage" (click)="expandMenu($event.srcElement.innerText)">{{subPage.pageName}}</span></a>
+              <a ><span class="subPage" (click)="expandMenu($event.srcElement.innerText)"  [routerLink]="subPage.pageLink">{{subPage.pageName}}</span></a>
               <!-- routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" -->
               <!-- [queryParams]="{allowEdit:true}" can be added alongside routerlink. These can be accessed from activatedRoute-->
               <div class="sidebar-submenu" *ngFor="let childPage of subPage.childPages" (click)="hideNavbar()" [routerLink]="childPage.pageLink" [queryParams]="showQueryParams(childPage.pageLink)"   class="hidesubmenu" #Menu id="{{subPage.pageName}}">

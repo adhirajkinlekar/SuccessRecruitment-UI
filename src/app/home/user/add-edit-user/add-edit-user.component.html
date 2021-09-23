@@ -1,1 +1,81 @@
 <p>add-edit-user works!</p>
+
+<!-- 
+<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
+    <div class="card-header" >Add User</div>
+    <div class="alert alert-danger" role="alert" *ngIf="error">
+      {{error}}
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="success">
+      {{success}}
+    </div>
+    <form> 
+     <div class="card-body col-12">
+  
+      <div class="row">
+        
+      <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+              <span class="input-group-text">User Name</span>
+              <input type="text" class="form-control" aria-label="Job Title">
+            </div>
+            <ng-container>
+              <div class="alert-danger error" *ngIf="jobForm.controls.JobTitle.touched &&  jobForm.controls.JobTitle.errors.required">
+                User Name is Required
+              </div>
+            </ng-container>
+      </div>
+  
+      <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+              <span class="input-group-text">Email</span>
+              <input type="text" class="form-control" aria-label="Field">
+            </div>
+            <ng-container>
+              <div class="alert-danger error" *ngIf="jobForm.controls.Field.touched &&  jobForm.controls.Field.errors.required">
+                Email is Required
+              </div>
+            </ng-container>
+      </div>
+  
+      <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+              <span class="input-group-text">Phone</span>
+              <input type="text" class="form-control" aria-label="JobLocation" formControlName="JobLocation">
+            </div>
+            <ng-container *ngIf="jobForm.controls.JobLocation.errors">
+              <div class="alert-danger error" *ngIf="jobForm.controls.JobLocation.touched &&  jobForm.controls.JobLocation.errors.required">
+                Phone is Required
+              </div>
+            </ng-container>
+      </div>
+
+      <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          
+        <select class="form-select " aria-label="Default select example">
+          <option value="" selected>Select Role</option>
+          <!-- <option *ngFor="let recruiter of recruiters" [value]="recruiter?.recruiterId">{{recruiter?.recruiterName}}</option> -->
+        <!-- </select>
+        <ng-container *ngIf="jobForm.hasError('length')">
+          <div class="alert-danger error" *ngIf="jobForm.controls.EmployerId.touched">
+              Recruiter is required
+          </div>
+          </ng-container>
+   </div>
+      
+
+  </div>
+          <button  type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+             <span *ngIf="isUpdate;else showSubmit"> Update</span>
+            <ng-template #showSubmit> <span> Submit</span> </ng-template>
+            </button>
+            <ng-template [ngIf]="isUpdate"> <span> TEST </span> </ng-template> -->
+            <!-- <ng-template> content is only shown if it has a structural directive with property binding syntax</ng-template> -->
+  <!-- </div>
+  </form>
+  </div>
+  
+  <ng-template #showError> 
+    <div class="alert alert-danger text-center" role="alert">
+    User not found
+  </div> </ng-template>  --> 

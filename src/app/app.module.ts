@@ -11,7 +11,7 @@ import { AppService } from './app.service';
 const initializeApp = (service: AppService) => {
   return () => {
      service.setBaseUrl();
-     window.addEventListener('resize', service.setAppHeight)
+    //  window.addEventListener('resize', service.setAppHeight)
   }
 };
 

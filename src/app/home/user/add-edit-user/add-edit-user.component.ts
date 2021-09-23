@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +9,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AddEditUserComponent implements OnInit {
 
+  addUserForm = new FormGroup({
+    userName:new FormControl('',Validators.required),
+    email:new FormControl('',Validators.required),
+    phone:new FormControl(''),
+    role:new FormControl('')
+  })
   constructor(private route:ActivatedRoute) {
    }
 

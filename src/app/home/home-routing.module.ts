@@ -15,6 +15,9 @@ const routes: Routes = [{
       path: 'Users', loadChildren :()=> import('./user/user.module').then((m)=> m.UserModule)
     },
     {
+      path: 'Appointments', loadChildren :()=> import('./appointments/appointments.module').then((m)=> m.AppointmentsModule)
+    },
+    {
       path:'unauthorized',component:UnauthorizedComponent
   },
   {
