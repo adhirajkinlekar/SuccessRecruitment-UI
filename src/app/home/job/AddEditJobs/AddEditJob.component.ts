@@ -78,7 +78,7 @@ export class AddEditJobComponent implements OnInit {
   selectValidator() {
     return (form: FormGroup): { [key: string]: any } => {
       if (form.controls['EmployerId'].value == '') {
-        return { 'length': true };
+        return { 'nullId': true };
       }
       return null;
     };

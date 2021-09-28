@@ -18,7 +18,7 @@
             <option value="" selected>Select Recruiter</option>
             <option *ngFor="let recruiter of recruiters" [value]="recruiter?.recruiterId">{{recruiter?.recruiterName}}</option>
           </select>
-          <ng-container *ngIf="jobForm.hasError('length')">
+          <ng-container *ngIf="jobForm.hasError('nullId')">
             <div class="alert-danger error" *ngIf="jobForm.controls.EmployerId.touched">
                 Recruiter is required
             </div>
