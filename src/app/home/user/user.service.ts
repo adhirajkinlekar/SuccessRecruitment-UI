@@ -12,4 +12,11 @@ export class UserService {
   getUsers(){
     return this.http.get<any>(`${this.appService.baseUrl}/user/AllUsers`)
   }
+  getRoles(){
+    return this.http.get<any>(`${this.appService.baseUrl}/User/Roles`)
+}
+  addUser(user){
+    return this.http.post<any>(`${this.appService.baseUrl}/Auth/Register`,user)
+  }
+
 }

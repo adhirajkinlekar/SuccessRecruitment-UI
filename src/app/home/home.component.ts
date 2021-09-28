@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;  
-    console.log(this.screenWidth)
     this.screenHeight = window.innerHeight;  
    this.userName = localStorage.getItem('USER_NAME');
    this.userRoles = localStorage.getItem('USER_ROLES')
