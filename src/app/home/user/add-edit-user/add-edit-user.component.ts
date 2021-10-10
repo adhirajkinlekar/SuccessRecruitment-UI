@@ -20,8 +20,12 @@ export class AddEditUserComponent implements OnInit {
     roleIds:new FormControl([],Validators.required)
   },{ validators: [this.selectValidator()]})
   constructor(private route:ActivatedRoute,private service:UserService) {
-
-    this.roles = this.route.snapshot.data.roles.$values;
+    this.roles = this.route.snapshot.data.roles[0].$values;
+    if(this.route.snapshot.paramMap.get('id')){
+      this.setFormValues();
+   
+    }
+    
     // if(this.roles){
     //   this.addUserForm.patchValue({
     //     roleId:[this.roles[0].roleId]
@@ -37,6 +41,16 @@ export class AddEditUserComponent implements OnInit {
     })
   }
 
+  setFormValues(){
+    let formValues = this.route.snapshot.data.roles[1];
+    this.addUserForm.patchValue({
+      userName: formValues?.userName,
+      email: formValues?.email,
+      phone: isNaN(formValues?.phone) ? null : formValues?.phone,
+      roleIds:formValues?.roleIds?.$values
+    })
+  }
+
   selectValidator() {
     return (form: FormGroup): { [key: string]: any } => {
       if (form.controls['roleIds'].value == '') {
@@ -48,7 +62,6 @@ export class AddEditUserComponent implements OnInit {
 
 
   submitForm(){
-    console.log(this.addUserForm.value)
     this.error = null;
     this.success = null;
     for (let c in this.addUserForm.controls) {

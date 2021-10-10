@@ -64,9 +64,9 @@ export class AddEditJobComponent implements OnInit {
   }
 
   setFormValues(){
-      this.isUpdate = true; 
-      this.formValue = this.route.snapshot.data['Data'][1];
-      this.jobForm.patchValue({
+        this.isUpdate = true; 
+        this.formValue = this.route.snapshot.data['Data'][1];
+        this.jobForm.patchValue({
         EmployerId:this.formValue?.recruiterId,
         JobTitle:this.formValue?.jobTitle,
         Field:this.formValue?.field,
@@ -122,6 +122,7 @@ export class AddEditJobComponent implements OnInit {
 
     if(this.isUpdate){
       let updateJobDto = Object.assign(this.jobForm.value,{jobId:this.formValue.jobId})
+     // let updateJobDto = {...this.jobForm.value,jobId:this.formValue.jobId}
        this.service.updateJob(updateJobDto).subscribe(
         data=>{
           if(data.body){

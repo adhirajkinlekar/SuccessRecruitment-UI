@@ -9,6 +9,9 @@ export class UserService {
 
   constructor(private http:HttpClient,private appService:AppService) { }
 
+  getUser(userId){
+    return this.http.get<any>(`${this.appService.baseUrl}/user/${userId}`)
+  }
   getUsers(){
     return this.http.get<any>(`${this.appService.baseUrl}/user/AllUsers`)
   }

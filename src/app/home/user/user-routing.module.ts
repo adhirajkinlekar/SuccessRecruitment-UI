@@ -10,6 +10,9 @@ const routes: Routes = [{
 },
 {
     path:'ViewUsers', component:ViewUsersComponent,resolve:{users:ViewUsersResolver},canDeactivate:[CanDeactivateGuard]
+},
+{
+    path:'EditUser/:id', component:AddEditUserComponent, canDeactivate:[CanDeactivateGuard],resolve:{roles:AddEditUserResolver}
 }
 ];
 

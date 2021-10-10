@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
   //  { static: true } as a second argument needs to be applied to ALL usages of @ViewChild() (and also @ContentChild() 
  //if you plan on accessing the selected element inside of ngOnInit().
 // If you DON'T access the selected element in ngOnInit (but anywhere else in your component), set static: false instead!
-  screenWidth: any;  
-  screenHeight: any;  
+  // screenWidth: any;  
+  // screenHeight: any;  
   userName:string;
   userRoles:string;
   tabs = [];
@@ -36,8 +36,8 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.screenWidth = window.innerWidth;  
-    this.screenHeight = window.innerHeight;  
+  //  this.screenWidth = window.innerWidth;  
+  //  this.screenHeight = window.innerHeight;  
    this.userName = localStorage.getItem('USER_NAME');
    this.userRoles = localStorage.getItem('USER_ROLES')
   //  this.user.emit({
@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
   //  console.log(this.Container)
   //  console.log(this.Items)
   if(window.innerWidth<768){
-    this.expandMenu("Jobs")
+    // this.expandMenu("Jobs")
   }
   }
 
