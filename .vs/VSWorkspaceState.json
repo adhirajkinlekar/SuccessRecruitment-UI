@@ -3,14 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\auth",
-    "\\src\\app\\auth\\sign-in",
     "\\src\\app\\home",
     "\\src\\app\\home\\appointments",
     "\\src\\app\\home\\job",
     "\\src\\app\\home\\job\\AddEditJobs",
-    "\\src\\app\\home\\unauthorized"
+    "\\src\\app\\home\\unauthorized",
+    "\\src\\app\\home\\user",
+    "\\src\\app\\home\\user\\add-edit-user"
   ],
-  "SelectedNode": "\\src\\app\\home\\home.component.html",
   "PreviewInSolutionExplorer": false
 }

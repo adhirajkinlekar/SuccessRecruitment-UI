@@ -29,6 +29,12 @@ resolve(route: ActivatedRouteSnapshot) {
             const message = `Retrieval error: ${error}`;
             return of({ formValues: null, error: message });
           }),
+        ) : of(null),
+        route.queryParams.isEdit == 'true'?  this.service.getUserPages(userId).pipe(
+          catchError((error) => {
+            const message = `Retrieval error: ${error}`;
+            return of({ formValues: null, error: message });
+          }),
         ) : of(null)
       ])
   }
