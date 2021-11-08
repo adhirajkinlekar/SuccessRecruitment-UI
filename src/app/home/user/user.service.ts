@@ -21,5 +21,13 @@ export class UserService {
   addUser(user){
     return this.http.post<any>(`${this.appService.baseUrl}/Auth/Register`,user)
   }
-
+  updateUser(user){
+    return this.http.put<any>(`${this.appService.baseUrl}/user/UpdateUser`,user)
+  }
+  getUserPages(userId){
+    return this.http.get<any>(`${this.appService.baseUrl}/user/${userId}/pages`)
+  }
+  updateUserPages(userId,pages){
+    return this.http.put<any>(`${this.appService.baseUrl}/user/${userId}/UpdatePages`,pages)
+  }
 }

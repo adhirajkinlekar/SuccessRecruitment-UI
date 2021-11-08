@@ -1,69 +1,115 @@
 <div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;">
-    <div class="card-header" >Add User</div>
-    <div class="alert alert-danger" role="alert" *ngIf="error">
-      {{error}}
-    </div>
-    <div class="alert alert-success" role="alert" *ngIf="success">
-      {{success}}
-    </div>
-    <form  [formGroup]="addUserForm" (submit)="submitForm()" *ngIf="roles"> 
-     <div class="card-body col-12">
-  
+  <div class="card-header" *ngIf="!isUpdate">Add User</div>
+  <div class="card-header" *ngIf="isUpdate">Edit User</div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="success">
+    {{success}}
+  </div>
+  <form [formGroup]="addUserForm" (submit)="submitForm()" *ngIf="roles">
+    <div class="card-body col-12">
+
       <div class="row">
-        
-      <div class="col-12 col-lg-6 col-xl-4 mb-3">
-          <div class="input-group">
-              <span class="input-group-text">User Name</span>
-              <input type="text" class="form-control" aria-label="user name" formControlName="userName">
-            </div>
-            <!-- Errors won't always exist, so we have to check for nulls -->
-            <ng-container *ngIf="addUserForm.controls.userName.errors">
-              <div class="alert-danger error" *ngIf="addUserForm.controls.userName.touched &&  addUserForm.controls.userName.errors.required">
-                User Name is Required
-              </div>
-            </ng-container>
-      </div>
-  
-      <div class="col-12 col-lg-6 col-xl-4 mb-3">
-          <div class="input-group">
-              <span class="input-group-text">Email</span>
-              <input type="text" class="form-control" aria-label="email" formControlName="email">
-            </div>
-            <ng-container *ngIf="addUserForm.controls.email.errors">
-              <div class="alert-danger error" *ngIf="addUserForm.controls.email.touched &&  addUserForm.controls.email.errors.required">
-                Email is Required
-              </div>
-            </ng-container>
-      </div>
-  
-      <div class="col-12 col-lg-6 col-xl-4 mb-3">
-          <div class="input-group">
-              <span class="input-group-text">Phone</span>
-              <input type="text" class="form-control" aria-label="phone" formControlName="phone">
-            </div>
-      </div>
 
-   
-   <div class="col-12 col-lg-6 col-xl-4 mb-3">
-       <ng-select  [items]="roles" placeholder="Select role" formControlName="roleIds"
-           bindLabel="roleName"
-           autofocus
-           bindValue="roleId" [multiple]="true" [closeOnSelect]="false">
-       </ng-select>
-   </div>
+        <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+            <span class="input-group-text">User Name</span>
+            <input type="text" class="form-control" aria-label="user name" formControlName="userName">
+          </div>
+          <!-- Errors won't always exist, so we have to check for nulls -->
+          <ng-container *ngIf="addUserForm.controls.userName.errors">
+            <div class="alert-danger error"
+              *ngIf="addUserForm.controls.userName.touched &&  addUserForm.controls.userName.errors.required">
+              User Name is Required
+            </div>
+          </ng-container>
+        </div>
 
-  </div>
-          <button  type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-             <!-- <span *ngIf="isUpdate;else showSubmit"> Update</span> -->
-            <span> Submit</span>
-            </button>
-            <!-- <ng-template [ngIf]="isUpdate"> <span> TEST </span> </ng-template> -->
-            <!-- ng-template content is only shown if it has a structural directive with property binding syntax  -->
-  </div>
+        <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+            <span class="input-group-text">Email</span>
+            <input type="text" class="form-control" aria-label="email" formControlName="email">
+          </div>
+          <ng-container *ngIf="addUserForm.controls.email.errors">
+            <div class="alert-danger error"
+              *ngIf="addUserForm.controls.email.touched &&  addUserForm.controls.email.errors.required">
+              Email is Required
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <div class="input-group">
+            <span class="input-group-text">Phone</span>
+            <input type="text" class="form-control" aria-label="phone" formControlName="phone">
+          </div>
+        </div>
+
+
+        <div class="col-12 col-lg-6 col-xl-4 mb-3">
+          <ng-select [items]="roles" placeholder="Select role" formControlName="roleIds" bindLabel="roleName" autofocus
+            bindValue="roleId" [multiple]="true" [closeOnSelect]="false">
+          </ng-select>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        <!-- <span *ngIf="isUpdate;else showSubmit"> Update</span> -->
+        <span> Submit</span>
+      </button>
+      <!-- <ng-template [ngIf]="isUpdate"> <span> TEST </span> </ng-template> -->
+      <!-- ng-template content is only shown if it has a structural directive with property binding syntax  -->
+    </div>
   </form>
-  </div>
-  
-  <ng-template #showError> 
-    <div class="alert alert-danger text-center" role="alert">
+</div>
+
+<ng-template #showError>
+  <div class="alert alert-danger text-center" role="alert">
     User not found
-  </div> </ng-template> 
+  </div>
+</ng-template>
+
+
+<div class="card text-dark bg-light mb-3 mt-3" style="max-width: 99%;margin: auto;border-radius: 10px;" *ngIf="isUpdate && pages.length>0">
+  <div class="card-header">Edit Page Access</div>
+  <div class="alert alert-danger" role="alert" *ngIf="error">
+    {{error}}
+  </div>
+  <div class="alert alert-success" role="alert" *ngIf="success">
+    {{success}}
+  </div>
+  <form [formGroup]="pageForm" *ngIf="pages.length>0"  (submit)="submitPageForm()">
+    <div class="card-body col-12">
+
+      <div class="row">
+        <div *ngFor="let page of pages">
+          {{page.tab.pageName}}
+          <div class="form-check ml-2" *ngFor="let subpage of page.pages">
+            <input class="form-check-input" type="checkbox" id="subpage.pageId" [checked]="subpage.isAccessible" (change)="onCheckboxChange($event,subpage.pageId)">
+            <label class="form-check-label" for="defaultCheck1">
+              {{subpage.pageName}}
+            </label>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        <!-- <span *ngIf="isUpdate;else showSubmit"> Update</span> -->
+        <span> Submit</span>
+      </button>
+    </div>
+   
+  </form>
+  
+</div>
+
+<div *ngIf="isUpdate && pages.length==0">
+  <div class="alert alert-info" role="alert">
+    No pages assigned or pages for the role are not yet created
+  </div>
+</div>
+<ng-template #showError>
+  <div class="alert alert-danger text-center" role="alert">
+    User not found
+  </div>
+</ng-template>
