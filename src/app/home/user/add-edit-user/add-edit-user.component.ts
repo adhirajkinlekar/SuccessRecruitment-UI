@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { HomeService } from '../../home.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class AddEditUserComponent implements OnInit {
   roles = [];
   isUpdate = false;
   pages = [];
+  formArray:FormArray
   @ViewChild('multiple', { read: ElementRef, static: false }) multiple: ElementRef;
   addUserForm = new FormGroup({
     userName: new FormControl('', [Validators.required]),
@@ -23,10 +25,11 @@ export class AddEditUserComponent implements OnInit {
   }, { validators: [this.selectValidator()] })
 
   pageForm: FormGroup;
-  constructor(private route: ActivatedRoute, private service: UserService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private service: UserService, private homeService: HomeService, private fb: FormBuilder) {
     this.pageForm = this.fb.group({
       checkArray: this.fb.array([])
     })
+    this.formArray = this.pageForm.get('checkArray') as FormArray;
     this.roles = this.route.snapshot.data.roles[0].$values;
 
     if (this.route.snapshot.paramMap.get('id')) {
@@ -38,6 +41,10 @@ export class AddEditUserComponent implements OnInit {
   }
 
   setPagesAccess(pageData) {
+    this.formArray.clear();
+    console.log(this.formArray)
+    this.pages = [];
+
     let tabs = pageData?.filter(x => x.isTab === true)
 
     tabs?.forEach(tab => {
@@ -47,16 +54,14 @@ export class AddEditUserComponent implements OnInit {
       })
     });
     pageData.forEach(page => {
-
-      const checkArray: FormArray = this.pageForm.get('checkArray') as FormArray;
-      if (page.isAccessible) {
-        checkArray.push(new FormControl({
+      if (page.isAccessible && !page.isTab) {
+        this.formArray.push(new FormControl({
           pageId: page.pageId,
           isAccessible: true
         }));
       }
-      else {
-        checkArray.push(new FormControl({
+      else if(!page.isAccessible && !page.isTab) {
+        this.formArray.push(new FormControl({
           pageId: page.pageId,
           isAccessible: false
         }));
@@ -93,12 +98,12 @@ export class AddEditUserComponent implements OnInit {
   }
 
   onCheckboxChange(e, id) {
-    const checkArray: FormArray = this.pageForm.get('checkArray') as FormArray;
+   
+    this.formArray = this.pageForm.get('checkArray') as FormArray;
 
-    checkArray.controls.forEach((item: FormControl, i) => {
-      if (item.value.pageId == id) {
-        console.log(checkArray.at(i))
-        checkArray.at(i).patchValue({
+    this.formArray.controls.forEach((item: FormControl, i) => {
+      if (item.value?.pageId == id) {
+        this.formArray.at(i).patchValue({
           pageId: item.value.pageId,
           isAccessible: !item.value.isAccessible
         }
@@ -106,7 +111,6 @@ export class AddEditUserComponent implements OnInit {
         return;
       }
     });
-    console.log(this.pageForm.value)
   }
 
   submitForm() {
@@ -152,13 +156,19 @@ export class AddEditUserComponent implements OnInit {
     this.service.updateUserPages(userId, this.pageForm.value.checkArray).subscribe(
       data => {
         this.service.getUserPages(userId).subscribe(
-          data=>{
-            this.setPagesAccess(userId)
+          data => {
+            this.setPagesAccess(data.$values)
+            if (this.route.snapshot.paramMap.get('id') == localStorage.getItem('USER_ID')) {
+              this.homeService.getAppInformation().subscribe(
+                pages => {
+                  this.homeService.setPages(pages)
+                }
+              )
+            }
           }
         )
       },
       err => {
-        console.log(err)
       }
     )
   }

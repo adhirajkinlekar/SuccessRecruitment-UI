@@ -54,7 +54,9 @@ export class SignInComponent implements OnInit {
 
     this.service.signIn(credentials).subscribe(
       user=>{
+        console.log(user)
          localStorage.setItem('JWT_TOKEN',`Bearer ${user.token}`);
+         localStorage.setItem('USER_ID',`${user.userId}`);
          localStorage.setItem('USER_NAME',`${user.userName}`);
          localStorage.setItem('USER_ROLES',`${user.userRoles}`);
          this.appService.isAuthenticated.next(true);

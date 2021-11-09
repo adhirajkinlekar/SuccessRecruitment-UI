@@ -15,7 +15,6 @@ export class AddEditUserResolver implements Resolve<any> {
 constructor(private service: UserService,private router: Router) {}
 
 resolve(route: ActivatedRouteSnapshot) {
-  console.log(route)
   const userId = route.params['id'];
        return forkJoin([
         this.service.getRoles().pipe(
