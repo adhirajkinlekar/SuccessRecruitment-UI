@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
   // screenHeight: any;  
   userName: string;
   userRoles: string;
-  tabs = [];
   constructor(private route: ActivatedRoute, public service: HomeService, public appService: AppService, private router: Router) {
     
   }

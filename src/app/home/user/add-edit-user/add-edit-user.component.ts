@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppService } from 'src/app/app.service';
 import { HomeService } from '../../home.service';
 import { UserService } from '../user.service';
 
@@ -12,6 +13,8 @@ import { UserService } from '../user.service';
 export class AddEditUserComponent implements OnInit {
   error: string;
   success: string;
+  pagesSuccesss:string;
+  pagesError:string;
   roles = [];
   isUpdate = false;
   pages = [];
@@ -25,7 +28,7 @@ export class AddEditUserComponent implements OnInit {
   }, { validators: [this.selectValidator()] })
 
   pageForm: FormGroup;
-  constructor(private route: ActivatedRoute, private service: UserService, private homeService: HomeService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private service: UserService, private homeService: HomeService,private appService:AppService, private fb: FormBuilder,private router: Router) {
     this.pageForm = this.fb.group({
       checkArray: this.fb.array([])
     })
@@ -130,6 +133,14 @@ export class AddEditUserComponent implements OnInit {
         data => {
           if (data) {
             this.success = "User has been successfully updated";
+            this.service.getUserPages(updatedUserDto.UserId).subscribe(
+              data=>{
+                this.setAccess(data)
+              },
+              err=>{
+
+              }
+            )
           }
         },
         error => {
@@ -157,14 +168,7 @@ export class AddEditUserComponent implements OnInit {
       data => {
         this.service.getUserPages(userId).subscribe(
           data => {
-            this.setPagesAccess(data.$values)
-            if (this.route.snapshot.paramMap.get('id') == localStorage.getItem('USER_ID')) {
-              this.homeService.getAppInformation().subscribe(
-                pages => {
-                  this.homeService.setPages(pages)
-                }
-              )
-            }
+           this.setAccess(data)
           }
         )
       },
@@ -173,4 +177,17 @@ export class AddEditUserComponent implements OnInit {
     )
   }
 
+  setAccess(data){
+    this.setPagesAccess(data.$values)
+    if (this.route.snapshot.paramMap.get('id') == localStorage.getItem('USER_ID')) {
+      this.pagesSuccesss = "Your page access has been updated. Signining you out... please log in again"
+   
+      setTimeout(() => {
+        localStorage.removeItem('JWT_TOKEN')
+        this.appService.isAuthenticated.next(false);
+        this.homeService.tabs = [];
+        this.router.navigateByUrl('/signin');
+      }, 3000);
+    }
+  }
 }
