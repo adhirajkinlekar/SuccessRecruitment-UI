@@ -45,7 +45,6 @@ export class AddEditUserComponent implements OnInit {
 
   setPagesAccess(pageData) {
     this.formArray.clear();
-    console.log(this.formArray)
     this.pages = [];
 
     let tabs = pageData?.filter(x => x.isTab === true)
@@ -182,12 +181,13 @@ export class AddEditUserComponent implements OnInit {
     if (this.route.snapshot.paramMap.get('id') == localStorage.getItem('USER_ID')) {
       this.pagesSuccesss = "Your page access has been updated. Signining you out... please log in again"
    
-      setTimeout(() => {
+      Promise.resolve(()=>{
         localStorage.removeItem('JWT_TOKEN')
         this.appService.isAuthenticated.next(false);
         this.homeService.tabs = [];
+      }).then(()=>{
         this.router.navigateByUrl('/signin');
-      }, 3000);
+      })
     }
   }
 }
