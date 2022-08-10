@@ -8,7 +8,7 @@ Features :
 - sign in
 - sign out
 - add users
-- edits users
+- edit users
 - assign roles to users to allow or disallow access to pages
 - Add, view, edit jobs
 
